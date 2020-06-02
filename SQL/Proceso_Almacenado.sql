@@ -32,123 +32,230 @@ on(rp.id_material = m.id_Material)
 go
 
 exec Registro_inventario
+																					
+											/*METODO LOTE POR LOTE*/					
 
-																/*Lote por lote*/
 
-																USE [sistemaInventario]
-GO
-/****** Object:  StoredProcedure [dbo].[MetodoLotePorLote]    Script Date: 11/05/2020 22:35:05 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
-GO
-ALTER proc [dbo].[MetodoLotePorLote]
+alter proc lotePorlote
 @idProducto int
 as
+	/*tabla temporal para guardar los datos del padre y obtener las necesidades brutas */
 	
-	create table #Temporal
+	create table #Ordenes
 	(
-		id_temporal int primary key identity(1,1),
-		necesidadesBrutas int,
-		recepcionProgramada int,
-		disponible int,
-		necesidadesNetas int,
-		recepcionOrden int,
-		lanzamientoOrden int
+		id int identity (1,1) primary key,
+		elemento varchar(100),
+		cantidad int
 	)
-		
-	declare @cont int;
-	declare @cont1 int;
-	set @cont = 1;
-	set @cont1 = 1;
+	
+	--Tabla auxiliar para llenar datos de necesidades brutas
+	create table #aux
+	(
+		id int primary key identity(1,1),
+		id_Orden int
+	)
 
-	declare @cont2 int;
-    set @cont2 = 1;
-
+	declare @idMaterial int;
+	set @idMaterial = 1;
 	declare @cantidadSemana int;
 	declare @cantidadM int;
 
 	set @cantidadSemana =( select pm.semana from Programa_Maestro pm where pm.semana in(select max(pm.semana) from Programa_Maestro pm));
-	set @cantidadM = ( select count(lm.id_Producto) from Lista_Material lm where lm.id_Producto = @idProducto);
+	set @cantidadM = ( select count(lm.id_Producto) from Lista_Material lm where lm.id_Producto = 1 /*idproducto*/);
 
+	
+	while (@idMaterial <= @cantidadM) --INnicio del while que contiene todos los materiales 
+	begin
 
-	while(@cont1<=@cantidadM)
-	begin --primer while
+		/*declaracion de tabla temporal*/
 
-		while(@cont <= @cantidadSemana)
-		begin --segundo while
-			declare @recepcion int;
-			declare @lanzamiento int;
-			set @lanzamiento = 0;
-			
-			declare @necesidadesB int
+		create table #Temporal
+		(
+			id int identity (1,1) primary key,
+			material varchar(100),
+			necesidadesBrutas int,
+			recepcionesProgramadas int,
+			disponible int,
+			necesidadesNetas int,
+			lanzamientoOrden int,
+		)
 
-			if(@cont1 = 1)
-			begin
-				set @necesidadesB = (select cantidad from Programa_Maestro pm where pm.id_producto = @idProducto and pm.semana = @cont);
-			end
-			
-			else  
-			begin 
-				set @necesidadesB = (select pm.lanzamientoOrden from #Temporal pm where pm.id_temporal = @cont);
-				select @necesidadesB;
-			end
-
-			declare @recepcionesP int
-			set @recepcionesP = 0	
-
-			declare @dispo int;
-
-			if(@cont = 1)
-				begin
-					set @dispo = (select p.disponible from Material p where p.id_Material = @cont1 ) + @recepcionesP - @necesidadesB;
-				end
-
-			else
-				begin
-					set @dispo = (select t.disponible from #Temporal t where t.id_temporal =( @cont - 1 )) + @recepcionesP - @necesidadesB;
-				end
-
-			declare @necesidades int;
-		
-			if(@dispo < 0)
-			begin
-				set @dispo = 0;
-
-				set @necesidades = @necesidadesB + (select m.stock_seguridad from Material m where m.id_Material = @cont1) - (select t.disponible from #Temporal t where t.id_temporal = (@cont -1)) - @recepcionesP;
-				set @recepcion = @necesidades;
-			end
-
-
-			else
-				begin
-					set @necesidades = 0;
-					set @recepcion = 0;
-				end
-
-
-		
-			insert into #Temporal (necesidadesBrutas, recepcionProgramada, disponible, necesidadesNetas, recepcionOrden) 
-			values (@necesidadesB, @recepcionesP, @dispo, @necesidades,@recepcion);
-
-			SET @cont=@cont+1;
-		end --cierre primer while
-
-			/*para poner el lanzamiento de orde*/
-		
-		while(@cont2 < @cantidadSemana)
-		begin
-			update #Temporal set lanzamientoOrden = (select recepcionOrden from #Temporal t where t.id_temporal = (@cont2 + 1)) where id_temporal = @cont2;
-			SET @cont2=@cont2+1;
-		end
-
-		select *from #Temporal
-
-		SET @cont1=@cont1+1;
+			/*Metodo de llenado de tabla temporal*/
+	
+		declare @cont int
 		set @cont = 1;
-		delete from  #Temporal;
-	end --cierre 2do while
 
-	drop table #Temporal
+			while(@cont <= @cantidadSemana) -- INicio del while de las semana
+			begin
+	 
+-------------------------------------------Variables
+			 declare @necesidadesB int;
+			 declare @stock int;
+			 declare @recepcionesP int;
+			 declare @dispo int;
+			 declare @necesidadesN int;
+			 declare @lanzamientoOrden int;
+			 declare @InvPeriodoAnterior int;
+			 --- Llenado de variables
+--------------------------------------------Necesidades Brutas
+			if(@idMaterial = 1) --- condicional cuando el material es el 1
+			begin
+			 set @necesidadesB = (select pm.cantidad from  Programa_Maestro pm where pm.semana = @cont); 
+			end
 
-exec MetodoLotePorLote 1
+			else 
+			begin
+				declare @materialPadre varchar(100);
+				declare @cantidadNecesitada int;
+				set @materialPadre = (select lm.Padre from Lista_Material lm where lm.id_Material = @idMaterial)
+				set @cantidadNecesitada = (select lm.cantidad_Elaborar from Lista_Material lm where lm.id_Material = @idMaterial);
+
+
+		--Insertando datos de la tabla auxiliar
+				insert into	#aux 
+				 select o.id from #Ordenes o where o.elemento = @materialPadre;
+			
+					set @necesidadesB = (select o.cantidad from #Ordenes o where o.elemento = @materialPadre and o.id = 
+					(select id_Orden from #aux a where a.id = @cont)) * @cantidadNecesitada;
+		
+		--select *from #aux
+			end ---fin del else
+-------------------------------------------Recepciones Programadas
+
+				if((select rp.cantidad from Recepciones_Programadas rp where rp.id_material = /*idMaterial*/@idMaterial and rp.semana = @cont) is null)
+				begin
+					 set @recepcionesP = 0;	
+				end
+				else
+				begin
+					 set @recepcionesP = (select rp.cantidad from Recepciones_Programadas rp where rp.id_material = /*idMaterial*/ @idMaterial and rp.semana = @cont) ;	
+				end
+
+-------------------------------------Disponible
+					if(@cont > 1)
+					begin
+					----NoP es para saver si el valor es positivo o no y asi poner asigniar el valor del periodo anterior
+						declare @NoP int
+
+						set @NoP = (select t.disponible from #Temporal t where t.id = (@cont - 1));
+
+						if(@NoP <0)
+						begin
+							set @InvPeriodoAnterior = (select m.stock_seguridad from Material m where m.id_Material = @idMaterial);
+						end
+						else
+						begin
+							set @InvPeriodoAnterior = (select t.disponible from #Temporal t where t.id = (@cont - 1));
+						end
+
+						
+					end
+					else
+					begin
+						set @InvPeriodoAnterior = (select m.disponible from Material m where m.id_Material = @idMaterial);
+					end
+						set @dispo = (dbo.Disponibilidad(@necesidadesB , @InvPeriodoAnterior, @recepcionesP));
+				
+-----------------------------------------------------necesidades netas
+
+					set @stock = (select m.stock_seguridad from Material m where m.id_Material = @idMaterial);
+
+-----------------------------------------------------necesidades netas
+				if(@dispo < 1)
+				begin
+				set @necesidadesN = dbo.NecesidadesNetas(@necesidadesB,@stock,@InvPeriodoAnterior,@recepcionesP);
+				--	set @necesidadesN = -(@dispo);
+				end
+				else 
+				begin
+					set @necesidadesN = 0; 
+				end
+
+				
+
+				---Llendo de tabla
+				insert into #Temporal(necesidadesBrutas ,material , recepcionesProgramadas , disponible , necesidadesNetas)
+				values (@necesidadesB,(select m.descripcion FROM  Material m where m.id_Material = @idMaterial),@recepcionesP,@dispo,@necesidadesN);
+
+--------------------------------------------------Lanzamiento de orden 
+				declare @aux int;
+				set @aux = 1;
+
+		
+				while(@aux < @cantidadSemana) --while para colocar en su posicion al lanzamiento de orden 
+				begin
+			
+					if((select t.necesidadesNetas from #Temporal t where t.id = (@aux + 1)) > 0 )
+					begin
+						set @lanzamientoOrden = (select t.necesidadesNetas from #Temporal t where t.id = (@aux + 1));
+					end
+
+					else 
+					begin
+						set @lanzamientoOrden = 0;
+					end
+			
+						---Llendo de tabla
+						update #Temporal set lanzamientoOrden = @lanzamientoOrden where id = @aux ;
+
+					set @aux = @aux + 1;
+				end -- Fin del while*/
+
+				--Incrementado contador
+				set @cont = @cont + 1;
+				--eliminacion de datos y reiniciando el id
+				truncate table #aux;
+				DBCC CHECKIDENT (#aux, RESEED, 1)
+			end -- fin del while de las semana
+
+--------------------------------WHILE para guardar los datos del elemento para el siguiente
+			declare @aux2 int
+			set @aux2 = 1;
+			while(@aux2 <= @cantidadSemana)
+			begin
+					--Guardando datos para los proximos calculos
+				declare @elemento varchar(100);
+				declare @cant int;
+				set @elemento = (select lm.descripcion from Material lm where id_Material = @idMaterial and @idProducto = 1);
+				set @cant = (select t.lanzamientoOrden from #Temporal t where t.id = @aux2);
+				insert into #Ordenes (elemento,cantidad) values (@elemento,@cant);
+
+				set @aux2 = @aux2 + 1;
+			end
+--------------------------------------------------------------------------------------------------------------------
+			select *from #Temporal;
+			drop table #Temporal --elimacion de tabla temporal
+
+			set @idMaterial = @idMaterial + 1;
+		end
+			drop table #aux;
+			--select *from #Ordenes
+			drop table #Ordenes
+go
+
+exec lotePorlote 1
+
+/*Funcion de necesidades netas*/
+/*Necesidades netas= Necesidades brutas+stock de seguridad-inventario disponible del período anterior-recepciones programadas*/
+
+alter function Disponibilidad
+(@NecesidadesB int, @inventarioDA int,@recepcionesP int)	
+returns int
+as
+begin
+	 declare @dispo int
+		set @dispo = (@inventarioDA + @recepcionesP - @NecesidadesB);
+	
+	 return @dispo;
+end
+
+create function NecesidadesNetas
+(@NecesidadesB int,@ss int, @inventarioDA int,@recepcionesP int)	
+returns int
+as
+begin
+	 declare @necesidades int
+		set @necesidades = (@NecesidadesB + @ss - @inventarioDA - @recepcionesP);
+	
+	 return @necesidades;
+end

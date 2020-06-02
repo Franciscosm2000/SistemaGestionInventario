@@ -1,10 +1,10 @@
 /*LLenar datos Productos*/
 
-insert into Producto values ('Cama Matrimonial',135);
+insert into Producto values ('Cama Matrimonial');
 
 
 /*datos materiales*/
-
+insert into material values ('Cama Matrimonial',135,0,1);
 insert into Material values ('Base', 37,8,1);
 insert into Material values ('Tabla', 210,0,1);
 insert into Material values ('Cabecera', 208,0,1);
@@ -22,16 +22,17 @@ select *from Material
 /*Lista de materiales*/
 
 insert into Lista_Material values(1,1,'cama matrimonial',1,1);
-insert into Lista_Material values(1,2,'cama matrimonial',1,9);
-insert into Lista_Material values(1,3,'base',2,1);
+insert into Lista_Material values(1,2,'cama matrimonial',1,1);
+insert into Lista_Material values(1,3,'cama matrimonial',1,9);
 insert into Lista_Material values(1,4,'base',2,1);
-insert into Lista_Material values(1,5,'base',2,2);
-insert into Lista_Material values(1,6,'base',2,8);
+insert into Lista_Material values(1,5,'base',2,1);
+insert into Lista_Material values(1,6,'base',2,2);
 insert into Lista_Material values(1,7,'base',2,8);
-insert into Lista_Material values(1,8,'cabecera',3,1);
+insert into Lista_Material values(1,8,'base',2,8);
 insert into Lista_Material values(1,9,'cabecera',3,1);
-insert into Lista_Material values(1,10,'tablon de apoyo',3,1);
+insert into Lista_Material values(1,10,'cabecera',3,1);
 insert into Lista_Material values(1,11,'tablon de apoyo',3,1);
+insert into Lista_Material values(1,12,'tablon de apoyo',3,1);
 
 select *from Lista_Material
 /*Recepciones Programadas*/
