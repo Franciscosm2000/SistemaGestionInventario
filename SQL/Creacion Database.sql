@@ -8,8 +8,7 @@ use sistemaInventario
 create table Producto
 (
 	id_Producto int identity(1,1) primary key,
-	nombre varchar(50),
-	disponible int
+	nombre varchar(50)
 );
 
 
