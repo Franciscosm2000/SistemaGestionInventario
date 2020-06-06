@@ -36,7 +36,7 @@ exec Registro_inventario
 											/*METODO LOTE POR LOTE*/					
 
 
-alter proc lotePorlote
+create proc lotePorlote
 @idProducto int
 as
 	/*tabla temporal para guardar los datos del padre y obtener las necesidades brutas */
@@ -178,6 +178,9 @@ as
 				values (@necesidadesB,(select m.descripcion FROM  Material m where m.id_Material = @idMaterial),@recepcionesP,@dispo,@necesidadesN);
 
 --------------------------------------------------Lanzamiento de orden 
+				--Se tiene que modificar de que para cada elemento hay diferente lanzamiento de orden
+				--
+				
 				declare @aux int;
 				set @aux = 1;
 
@@ -235,10 +238,11 @@ go
 
 exec lotePorlote 1
 
+
 /*Funcion de necesidades netas*/
 /*Necesidades netas= Necesidades brutas+stock de seguridad-inventario disponible del período anterior-recepciones programadas*/
 
-alter function Disponibilidad
+create function Disponibilidad
 (@NecesidadesB int, @inventarioDA int,@recepcionesP int)	
 returns int
 as
@@ -248,6 +252,7 @@ begin
 	
 	 return @dispo;
 end
+
 
 create function NecesidadesNetas
 (@NecesidadesB int,@ss int, @inventarioDA int,@recepcionesP int)	
@@ -259,3 +264,200 @@ begin
 	
 	 return @necesidades;
 end
+
+
+
+										/*Metodo EOQ Cantidad economica de pedido*/
+
+
+alter proc MetodoEOQ
+@idProducto int
+as	
+	create table #Temporal
+		(
+			id int identity (1,1) primary key,
+			necesidadesBrutas int,
+			recepcionesProgramadas int,
+			disponible int,
+			necesidadesNetas int,
+			lanzamientoOrden int,
+		)
+
+	
+		declare @cont int
+		set @cont = 1;
+		declare @cantidadSemana int;
+		declare @cantidadM int;
+
+		set @cantidadSemana =( select pm.semana from Programa_Maestro pm where pm.semana in(select max(pm.semana) from Programa_Maestro pm));
+			while(@cont <= @cantidadSemana) -- INicio del while de las semana
+			begin
+	 
+-------------------------------------------Variables
+			 declare @necesidadesB int;
+			 declare @stock int;
+			 declare @recepcionesP int;
+			 declare @dispo int;
+			 declare @necesidadesN int;
+			 declare @lanzamientoOrden int;
+			 declare @InvPeriodoAnterior int;
+			 --- Llenado de variables
+--------------------------------------------Necesidades Brutas
+			 set @necesidadesB = (select pm.cantidad from  Programa_Maestro pm where pm.semana = @cont); 
+
+-------------------------------------------Recepciones Programada
+
+				if((select rp.cantidad from Recepciones_Programadas rp where rp.id_material = @idProducto and rp.semana = @cont) is null)
+				begin
+					 set @recepcionesP = 0;	
+				end
+				else
+				begin
+					 set @recepcionesP = (select rp.cantidad from Recepciones_Programadas rp where rp.id_material = /*idMaterial*/ @idProducto and rp.semana = @cont) ;	
+				end
+
+----------------------------------------------Inventario Disponible
+				if(@cont = 1)
+				begin
+					set @dispo = (select lm.disponible from Material lm where lm.id_Material = @idProducto);
+				end --Fin if
+
+				else
+				begin
+										/*necesidades netas -recepcion de orden*/
+					declare @NecesidadesD int;
+
+					set @NecesidadesD = (select t.necesidadesNetas from #Temporal t where t.id = (@cont - 1));
+
+					if(@cont%2=0)
+					begin
+						set @dispo = (select dbo.Cantidades(@idProducto)) - @necesidadesN  ;
+					end
+
+					else 
+					begin
+							/*Inventario dispo-necesidades brutas*/
+						declare @inventarioAnterior int;
+						declare @necesidadesBrutas int;
+
+						set @inventarioAnterior= (select t.disponible from #Temporal t where t.id = (@cont - 1));
+						set @necesidadesBrutas= (select t.necesidadesBrutas from #Temporal t where t.id = (@cont - 1));
+
+						set @dispo =  @inventarioAnterior - @necesidadesBrutas;
+
+					end
+						
+				end --Fin else
+
+----------------------------------------------Necesidades Netas
+				if(@cont%2=0)
+				begin
+					set @necesidadesN = 0;
+				end
+
+				else 
+				begin
+					set @necesidadesN = @necesidadesB - @dispo;
+				end
+
+----------------------------------------------Lanzamiento de orden
+
+				if(@cont%2=0)
+				begin
+					set @lanzamientoOrden = (select dbo.Cantidades(@idProducto));
+				end
+
+				else 
+				begin
+					set @lanzamientoOrden = 0;
+				end
+
+				
+				 insert into #Temporal (necesidadesBrutas, recepcionesProgramadas, disponible, necesidadesNetas, lanzamientoOrden)
+				  values (@necesidadesB,@recepcionesP,@dispo,@necesidadesN,@lanzamientoOrden);
+
+
+		set @cont = @cont + 1;
+		end---Fin del while
+		select *from #Temporal;
+		drop table #Temporal;
+go
+
+exec MetodoEOQ 1
+
+
+/*Funcion de cantidad*/
+--verificar funcion
+alter function Cantidades
+(@id int)
+returns float
+as
+begin
+	declare @Demanda int
+
+	set @Demanda = (select avg(pm.cantidad) as Demanda
+					from Producto p inner join Programa_Maestro pm 
+					on (p.id_Producto = pm.id_Producto)) *52; 
+
+	declare @Q float
+	declare @divicion float
+
+	set @divicion = (2*@Demanda*(select p.costoPedir from Producto p where id_Producto = @id))/((select p.costoMantenimiento from Producto p where id_Producto = @id)*52);
+
+	set @Q =  ROUND((SQRT(@divicion)),0);
+
+
+	return @Q
+end 
+
+select dbo.Cantidades(1)
+
+										/*Metodo POQ Cantidad economica de pedido*/
+
+create proc MetodoPOQ
+begin
+end
+
+
+
+alter function FrecuenciadePedido
+(@id int)
+	returns float
+as
+begin
+	/*D/Q*/
+
+	declare @Demanda int
+	declare @N int
+
+	set @Demanda = ((select avg(pm.cantidad) as Demanda
+					from Producto p inner join Programa_Maestro pm 
+					on (p.id_Producto = pm.id_Producto)) *52); 
+
+	set @N = (select pm.semana from Programa_Maestro pm where pm.semana in(select max(pm.semana) from Programa_Maestro pm));
+	
+	declare @frecuencia float;
+	
+	set @frecuencia = round(((@Demanda)/(select dbo.Cantidades(@id))/52)*@N,2);
+	
+	return @frecuencia;
+end
+
+select dbo.FrecuenciadePedido(1)
+
+
+alter function NumeroDePedidos
+(@id int)
+	returns float
+as
+begin
+		declare @N int
+		set @N = (select pm.semana from Programa_Maestro pm where pm.semana in(select max(pm.semana) from Programa_Maestro pm));
+
+		declare @nPedidos float
+		set @nPedidos = round((select dbo.FrecuenciadePedido(@id))/@N,2);
+
+		return @nPedidos;
+end
+
+select dbo.NumeroDePedidos(1)

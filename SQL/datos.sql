@@ -1,6 +1,6 @@
 /*LLenar datos Productos*/
 
-insert into Producto values ('Cama Matrimonial');
+insert into Producto values ('Cama Matrimonial',0.5,250);
 
 
 /*datos materiales*/
