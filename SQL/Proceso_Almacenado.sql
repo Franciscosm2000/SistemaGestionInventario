@@ -387,7 +387,6 @@ exec MetodoEOQ 1
 
 
 /*Funcion de cantidad*/
---verificar funcion
 alter function Cantidades
 (@id int)
 returns float
@@ -416,6 +415,7 @@ select dbo.Cantidades(1)
 
 create proc MetodoPOQ
 begin
+	
 end
 
 
@@ -455,7 +455,7 @@ begin
 		set @N = (select pm.semana from Programa_Maestro pm where pm.semana in(select max(pm.semana) from Programa_Maestro pm));
 
 		declare @nPedidos float
-		set @nPedidos = round((select dbo.FrecuenciadePedido(@id))/@N,2);
+		set @nPedidos = round(@N/(select dbo.FrecuenciadePedido(1)),2);
 
 		return @nPedidos;
 end
