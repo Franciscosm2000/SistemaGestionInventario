@@ -268,7 +268,7 @@ end
 
 
 										/*Metodo EOQ Cantidad economica de pedido*/
-
+/*revisar Disponible y recepciones Orden */
 
 alter proc MetodoEOQ
 @idProducto int
@@ -383,6 +383,7 @@ as
 		drop table #Temporal;
 go
 
+
 exec MetodoEOQ 1
 
 
@@ -413,11 +414,139 @@ select dbo.Cantidades(1)
 
 										/*Metodo POQ Cantidad economica de pedido*/
 
-create proc MetodoPOQ
-begin
-	
-end
+alter proc MetodoPOQ
+@idProducto int
+as	
 
+	declare @cantidadPedios int;
+	set @cantidadPedios = convert(int,(select dbo.NumeroDePedidos(@idProducto)));
+
+
+	create table #Temporal
+		(
+			id int identity (1,1) primary key,
+			necesidadesBrutas int,
+			recepcionesProgramadas int,
+			disponible int,
+			necesidadesNetas int,
+			recepcionOrden int,
+			lanzamientoOrden int,
+		)
+
+	
+		declare @cont int
+		set @cont = 1;
+		declare @cantidadSemana int;
+
+		set @cantidadSemana =( select pm.semana from Programa_Maestro pm where pm.semana in(select max(pm.semana) from Programa_Maestro pm));
+			while(@cont <= @cantidadSemana) -- INicio del while de las semana
+			begin
+	 
+-------------------------------------------Variables
+			 declare @necesidadesB int;
+			 declare @stock int;
+			 declare @recepcionesP int;
+			 declare @dispo int;
+			 declare @necesidadesN int;
+			 declare @lanzamientoOrden int;
+			 declare @InvPeriodoAnterior int;
+			 --- Llenado de variables
+--------------------------------------------Necesidades Brutas
+			 set @necesidadesB = (select pm.cantidad from  Programa_Maestro pm where pm.semana = @cont); 
+
+-------------------------------------------Recepciones Programada
+
+				if((select rp.cantidad from Recepciones_Programadas rp where rp.id_material = @idProducto and rp.semana = @cont) is null)
+				begin
+					 set @recepcionesP = 0;	
+				end
+				else
+				begin
+					 set @recepcionesP = (select rp.cantidad from Recepciones_Programadas rp where rp.id_material = /*idMaterial*/ @idProducto and rp.semana = @cont) ;	
+				end
+
+-------------------------------------------Inventario Disponible
+				if(@cont = 1)
+				begin
+					set @dispo = (select lm.disponible from Material lm where lm.id_Material = @idProducto);
+				end --Fin if
+
+				else
+				begin
+										/*necesidades netas -recepcion de orden*/
+					declare @NecesidadesD int;
+					declare @recepcionOrdenD int;
+
+					set @NecesidadesD = (select t.necesidadesNetas from #Temporal t where t.id = (@cont - 1));
+					set @recepcionOrdenD = (select t.recepcionOrden from #Temporal t where t.id = (@cont - 1));
+
+					set @dispo = @recepcionOrdenD - @NecesidadesD  ;
+
+				end --Fin else
+-------------------------------------------Necesidades Netas
+				
+				set @necesidadesN = (@necesidadesB - @dispo);
+	
+-------------------------------------------Recepcion Orden
+
+			declare @recepcionOrden int;
+
+
+
+			if(@cont = 1)
+			begin
+				set @recepcionOrden = (select dbo.DisponiblePOQ(@idProducto,@cont));
+			end
+			else
+			begin
+				if(@cantidadPedios%2=0 )
+				begin
+					if(@cont%2=0)
+					begin
+						set @recepcionOrden = (select dbo.DisponiblePOQ(@idProducto,(@cont+1)));
+					end
+				end 
+
+				else 
+				begin
+					if(@cont%2 != 0)
+					begin
+						set @recepcionOrden = (select dbo.DisponiblePOQ(@idProducto,(@cont+1)));
+					end
+					
+				end
+			end
+			
+				insert into #Temporal (necesidadesBrutas,recepcionesProgramadas,disponible,necesidadesNetas,recepcionOrden)
+				 values (@necesidadesB,@recepcionesP,@dispo,@necesidadesN,@recepcionOrden);
+				 				
+				if(@cantidadPedios%2=0 )
+				begin
+					if(@cont%2=0)
+					begin
+						update #Temporal set recepcionOrden = 0 where id = @cont;
+						update #Temporal set lanzamientoOrden = @recepcionOrden where id = @cont;
+					end
+				end 
+				else 
+				begin
+					if(@cont%2 != 0)
+					begin
+						update #Temporal set recepcionOrden = @recepcionOrden  where id = @cont;
+						update #Temporal set lanzamientoOrden = 0 where id=@cont;
+					end
+					
+				end				
+				
+
+			set @cont = @cont + 1;
+		end---Fin del while
+
+		select *from #Temporal;
+		drop table #Temporal;
+	go
+
+exec MetodoPOQ 1
 
 
 alter function FrecuenciadePedido
@@ -460,4 +589,31 @@ begin
 		return @nPedidos;
 end
 
-select dbo.NumeroDePedidos(1)
+
+alter function DisponiblePOQ
+(@idProducto int, @cont int)
+returns int
+as
+begin
+			declare @numeroPedidos int;
+			declare @recepcionOrden int;
+			set @recepcionOrden = 0;
+			set @numeroPedidos =convert(int,dbo.NumeroDePedidos(1));
+			declare @cont2 int;
+			set @cont2 = 1;
+
+			while(@cont2<=@numeroPedidos)
+			begin
+				if(@cont2 = 1)
+				begin
+					set @recepcionOrden = @recepcionOrden +(select pm.cantidad from Programa_Maestro pm where pm.id_producto = 1 and pm.id_Programa = @cont);
+				end
+				else
+				begin
+					set @recepcionOrden = @recepcionOrden + (select pm.cantidad from Programa_Maestro pm where pm.id_producto = @idProducto and pm.id_Programa = (@cont + 1));
+				end
+				set @cont2 = @cont2 + 1;
+			end
+
+			return @recepcionOrden;
+end
