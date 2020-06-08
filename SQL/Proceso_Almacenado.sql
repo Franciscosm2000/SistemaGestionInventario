@@ -617,3 +617,90 @@ begin
 
 			return @recepcionOrden;
 end
+
+
+
+
+	
+					/*Metodo para tabla de costo por cada uno de los metodos */
+
+
+alter proc tablaCosto
+as
+	create table #Costo
+	(
+		id int primary key identity(1,1),
+		modelo varchar(100),
+		costoMatener float,
+		costoOrdenar float,
+		costoTotal float
+	)
+
+	create table #EOQ
+	(
+			id int,
+			necesidadesBrutas int,
+			recepcionesProgramadas int,
+			disponible int,
+			necesidadesNetas int,
+			lanzamientoOrden int,
+	)
+
+	create table #POQ
+	(
+			id int ,
+			necesidadesBrutas int,
+			recepcionesProgramadas int,
+			disponible int,
+			necesidadesNetas int,
+			recepcionOrden int,
+			lanzamientoOrden int,
+	)
+
+	---Llenado de tablas
+
+	insert into #EOQ (id,necesidadesBrutas , recepcionesProgramadas, disponible , necesidadesNetas ,lanzamientoOrden)
+	exec MetodoEOQ 1;
+
+	insert into #POQ (id,necesidadesBrutas , recepcionesProgramadas, disponible , necesidadesNetas , recepcionOrden,lanzamientoOrden)
+	exec MetodoPOQ 1;
+
+	---Impresion de tabla
+	
+	declare @costoM int;
+	declare @costoO int;
+
+	set @costoM = (select p.costoMantenimiento from Producto p  where p.id_Producto = 1)
+	set @costoO = (select p.costoPedir from Producto p  where p.id_Producto = 1)
+
+	---tabla eoq
+	declare @costoMantenerEOQ int;
+	declare @costoOrdenEOQ int;
+	declare @costoTotalEOQ int;
+
+	set @costoMantenerEOQ = (select SUM((e.disponible*0.5)) from #EOQ e)
+	set @costoOrdenEOQ =(select SUM(@costoO) from #EOQ e where e.lanzamientoOrden  is not null or e.lanzamientoOrden > 0);
+	set @costoTotalEOQ = @costoMantenerEOQ + @costoOrdenEOQ;
+
+		insert into #Costo values ('Metodo EOQ',@costoMantenerEOQ,@costoOrdenEOQ,@costoTotalEOQ);
+
+	---tabla poq
+	declare @costoMantenerPOQ int;
+	declare @costoOrdenPOQ int;
+	declare @costoTotalPOQ int;
+
+	set @costoMantenerPOQ = (select SUM(e.disponible * 0.5) from #POQ e)
+	set @costoOrdenPOQ = (select SUM(@costoO) from #POQ e where e.lanzamientoOrden is not null or e.lanzamientoOrden > 0);
+	set @costoTotalPOQ = @costoMantenerPOQ + @costoOrdenPOQ;
+
+		insert into #Costo values ('Metodo POQ',@costoMantenerPOQ,@costoOrdenPOQ,@costoTotalPOQ);
+
+
+	select *from #Costo;
+	---Elimados de tablas
+	drop table #EOQ;
+	drop table #POQ;
+	drop table #Costo;
+go
+
+exec tablaCosto
