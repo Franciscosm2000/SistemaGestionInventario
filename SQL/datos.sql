@@ -1,6 +1,10 @@
 /*LLenar datos Productos*/
 
+<<<<<<< HEAD
 insert into Producto values ('Cama Matrimonial',0.5,250);
+=======
+insert into Producto values ('Cama Matrimonial');
+>>>>>>> 143c9ea9bae5d6c0d8cf4cdfb06fcc71cead865f
 
 
 /*datos materiales*/

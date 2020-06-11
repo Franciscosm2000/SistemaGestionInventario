@@ -8,9 +8,13 @@ use sistemaInventario
 create table Producto
 (
 	id_Producto int identity(1,1) primary key,
+<<<<<<< HEAD
 	nombre varchar(50),
 	costoMantenimiento float,
 	costoPedir float
+=======
+	nombre varchar(50)
+>>>>>>> 143c9ea9bae5d6c0d8cf4cdfb06fcc71cead865f
 );
 
 
