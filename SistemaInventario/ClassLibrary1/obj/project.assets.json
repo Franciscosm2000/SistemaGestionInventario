@@ -201,11 +201,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\SistemaInventario\\ClassLibrary1\\Controller.csproj",
+      "projectUniqueName": "C:\\Users\\franc\\Documents\\SistemaGestionInventario\\SistemaInventario\\ClassLibrary1\\Controller.csproj",
       "projectName": "Controller",
-      "projectPath": "G:\\SistemaInventario\\ClassLibrary1\\Controller.csproj",
+      "projectPath": "C:\\Users\\franc\\Documents\\SistemaGestionInventario\\SistemaInventario\\ClassLibrary1\\Controller.csproj",
       "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
-      "outputPath": "G:\\SistemaInventario\\ClassLibrary1\\obj\\",
+      "outputPath": "C:\\Users\\franc\\Documents\\SistemaGestionInventario\\SistemaInventario\\ClassLibrary1\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
@@ -224,8 +224,8 @@
       "frameworks": {
         "netstandard2.0": {
           "projectReferences": {
-            "G:\\SistemaInventario\\Model\\Model.csproj": {
-              "projectPath": "G:\\SistemaInventario\\Model\\Model.csproj"
+            "C:\\Users\\franc\\Documents\\SistemaGestionInventario\\SistemaInventario\\Model\\Model.csproj": {
+              "projectPath": "C:\\Users\\franc\\Documents\\SistemaGestionInventario\\SistemaInventario\\Model\\Model.csproj"
             }
           }
         }

@@ -124,46 +124,26 @@ namespace SistemaInventario
         //METODOS PARA ANIMACION DE MENU SLIDING--
         private void btnMenu_Click(object sender, EventArgs e)
         {
+ 
 
-            /*  //-------CON EFECTO SLIDING
-              if (panelMenu.Width == 238)
-              {
-                  this.tmContraerMenu.Start();
-
-              }
-              else if (panelMenu.Width == 78)
-              {
-                  this.tmExpandirMenu.Start();
-              }
-
-              MessageBox.Show(panelMenu.Width.ToString());*/
-
-            //-------SIN EFECTO
             if (panelMenu.Width == 78)
             {
+                panelMenu.Visible = false;
                 panelMenu.Width = 230;
+                MenuEfect.ShowSync(panelMenu);
+
+
             }
-            else
-
+            else if (panelMenu.Width == 230)
+            {
+                panelMenu.Visible = false;
                 panelMenu.Width = 78;
-        }
+                MenuEfect.ShowSync(panelMenu);
 
-        private void tmExpandirMenu_Tick(object sender, EventArgs e)
-        {
-            if (panelMenu.Width >= 230)
-                this.tmExpandirMenu.Stop();
-            else
-                panelMenu.Width = panelMenu.Width + 5;
-            
+            }
+ 
         }
-
-        private void tmContraerMenu_Tick(object sender, EventArgs e)
-        {
-            if (panelMenu.Width <= 78)
-                this.tmContraerMenu.Stop();
-            else
-                panelMenu.Width = panelMenu.Width - 5;
-        }
+ 
 
         //METODO PARA ABRIR FORM DENTRO DE PANEL-----------------------------------------------------
         private void AbrirFormEnPanel(object formHijo)
@@ -200,8 +180,7 @@ namespace SistemaInventario
             fm.FormClosed += new FormClosedEventHandler(VentanaLogo);
             AbrirFormEnPanel(fm);*/
         }
-
-
+        
 
         //METODO PARA HORA Y FECHA ACTUAL ----------------------------------------------------------
         private void tmFechaHora_Tick(object sender, EventArgs e)

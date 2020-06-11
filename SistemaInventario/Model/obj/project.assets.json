@@ -185,11 +185,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "G:\\SistemaInventario\\Model\\Model.csproj",
+      "projectUniqueName": "C:\\Users\\franc\\Documents\\SistemaGestionInventario\\SistemaInventario\\Model\\Model.csproj",
       "projectName": "Model",
-      "projectPath": "G:\\SistemaInventario\\Model\\Model.csproj",
+      "projectPath": "C:\\Users\\franc\\Documents\\SistemaGestionInventario\\SistemaInventario\\Model\\Model.csproj",
       "packagesPath": "C:\\Users\\franc\\.nuget\\packages\\",
-      "outputPath": "G:\\SistemaInventario\\Model\\obj\\",
+      "outputPath": "C:\\Users\\franc\\Documents\\SistemaGestionInventario\\SistemaInventario\\Model\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

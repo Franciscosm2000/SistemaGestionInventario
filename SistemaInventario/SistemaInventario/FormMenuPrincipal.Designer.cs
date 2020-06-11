@@ -29,30 +29,30 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            BunifuAnimatorNS.Animation animation2 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMenuPrincipal));
             this.panelContenedorPrincipal = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lbFecha = new System.Windows.Forms.Label();
+            this.lblHora = new System.Windows.Forms.Label();
             this.panelContenedorForm = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.btnMenu = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnPQ = new System.Windows.Forms.Button();
             this.btnPlanAgregado = new System.Windows.Forms.Button();
-            this.btnMenu = new System.Windows.Forms.PictureBox();
             this.btnMRP = new System.Windows.Forms.Button();
             this.PanelBarraTitulo = new System.Windows.Forms.Panel();
             this.btnNormal = new System.Windows.Forms.Button();
             this.btnMinimizar = new System.Windows.Forms.Button();
             this.btnMaximizar = new System.Windows.Forms.Button();
             this.btnCerrar = new System.Windows.Forms.Button();
-            this.tmExpandirMenu = new System.Windows.Forms.Timer(this.components);
-            this.tmContraerMenu = new System.Windows.Forms.Timer(this.components);
             this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.lbFecha = new System.Windows.Forms.Label();
-            this.lblHora = new System.Windows.Forms.Label();
+            this.MenuEfect = new BunifuAnimatorNS.BunifuTransition(this.components);
             this.panelContenedorPrincipal.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.panelMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).BeginInit();
             this.PanelBarraTitulo.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelContenedorPrincipal
@@ -62,15 +62,55 @@
             this.panelContenedorPrincipal.Controls.Add(this.panelContenedorForm);
             this.panelContenedorPrincipal.Controls.Add(this.panelMenu);
             this.panelContenedorPrincipal.Controls.Add(this.PanelBarraTitulo);
+            this.MenuEfect.SetDecoration(this.panelContenedorPrincipal, BunifuAnimatorNS.DecorationType.None);
             this.panelContenedorPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedorPrincipal.Location = new System.Drawing.Point(0, 0);
             this.panelContenedorPrincipal.Name = "panelContenedorPrincipal";
             this.panelContenedorPrincipal.Size = new System.Drawing.Size(1100, 717);
             this.panelContenedorPrincipal.TabIndex = 0;
             // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.panel1.Controls.Add(this.lbFecha);
+            this.panel1.Controls.Add(this.lblHora);
+            this.MenuEfect.SetDecoration(this.panel1, BunifuAnimatorNS.DecorationType.None);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(78, 617);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1022, 100);
+            this.panel1.TabIndex = 7;
+            // 
+            // lbFecha
+            // 
+            this.lbFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbFecha.AutoSize = true;
+            this.MenuEfect.SetDecoration(this.lbFecha, BunifuAnimatorNS.DecorationType.None);
+            this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
+            this.lbFecha.ForeColor = System.Drawing.Color.Black;
+            this.lbFecha.Location = new System.Drawing.Point(760, 71);
+            this.lbFecha.Name = "lbFecha";
+            this.lbFecha.Size = new System.Drawing.Size(224, 20);
+            this.lbFecha.TabIndex = 4;
+            this.lbFecha.Text = "Lunes, 26 de septiembre 2018";
+            // 
+            // lblHora
+            // 
+            this.lblHora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblHora.AutoSize = true;
+            this.MenuEfect.SetDecoration(this.lblHora, BunifuAnimatorNS.DecorationType.None);
+            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 35.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblHora.ForeColor = System.Drawing.Color.Black;
+            this.lblHora.Location = new System.Drawing.Point(767, 10);
+            this.lblHora.Name = "lblHora";
+            this.lblHora.Size = new System.Drawing.Size(205, 54);
+            this.lblHora.TabIndex = 1;
+            this.lblHora.Text = "21:49:45";
+            // 
             // panelContenedorForm
             // 
             this.panelContenedorForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.MenuEfect.SetDecoration(this.panelContenedorForm, BunifuAnimatorNS.DecorationType.None);
             this.panelContenedorForm.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenedorForm.Location = new System.Drawing.Point(78, 43);
             this.panelContenedorForm.Name = "panelContenedorForm";
@@ -80,19 +120,38 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.panelMenu.Controls.Add(this.btnMenu);
             this.panelMenu.Controls.Add(this.btnPQ);
             this.panelMenu.Controls.Add(this.btnPlanAgregado);
-            this.panelMenu.Controls.Add(this.btnMenu);
             this.panelMenu.Controls.Add(this.btnMRP);
+            this.MenuEfect.SetDecoration(this.panelMenu, BunifuAnimatorNS.DecorationType.None);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panelMenu.Location = new System.Drawing.Point(0, 43);
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(78, 674);
             this.panelMenu.TabIndex = 2;
             // 
+            // btnMenu
+            // 
+            this.btnMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
+            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuEfect.SetDecoration(this.btnMenu, BunifuAnimatorNS.DecorationType.BottomMirror);
+            this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
+            this.btnMenu.ImageActive = null;
+            this.btnMenu.Location = new System.Drawing.Point(44, 6);
+            this.btnMenu.Name = "btnMenu";
+            this.btnMenu.Size = new System.Drawing.Size(35, 35);
+            this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.btnMenu.TabIndex = 14;
+            this.btnMenu.TabStop = false;
+            this.btnMenu.Zoom = 10;
+            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
+            // 
             // btnPQ
             // 
             this.btnPQ.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuEfect.SetDecoration(this.btnPQ, BunifuAnimatorNS.DecorationType.None);
             this.btnPQ.FlatAppearance.BorderSize = 0;
             this.btnPQ.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
             this.btnPQ.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
@@ -113,6 +172,7 @@
             // btnPlanAgregado
             // 
             this.btnPlanAgregado.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuEfect.SetDecoration(this.btnPlanAgregado, BunifuAnimatorNS.DecorationType.None);
             this.btnPlanAgregado.FlatAppearance.BorderSize = 0;
             this.btnPlanAgregado.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
             this.btnPlanAgregado.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
@@ -130,22 +190,10 @@
             this.btnPlanAgregado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPlanAgregado.UseVisualStyleBackColor = true;
             // 
-            // btnMenu
-            // 
-            this.btnMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
-            this.btnMenu.Location = new System.Drawing.Point(35, 0);
-            this.btnMenu.Name = "btnMenu";
-            this.btnMenu.Size = new System.Drawing.Size(43, 37);
-            this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.btnMenu.TabIndex = 7;
-            this.btnMenu.TabStop = false;
-            this.btnMenu.Click += new System.EventHandler(this.btnMenu_Click);
-            // 
             // btnMRP
             // 
             this.btnMRP.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuEfect.SetDecoration(this.btnMRP, BunifuAnimatorNS.DecorationType.None);
             this.btnMRP.FlatAppearance.BorderSize = 0;
             this.btnMRP.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
             this.btnMRP.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
@@ -170,6 +218,7 @@
             this.PanelBarraTitulo.Controls.Add(this.btnMinimizar);
             this.PanelBarraTitulo.Controls.Add(this.btnMaximizar);
             this.PanelBarraTitulo.Controls.Add(this.btnCerrar);
+            this.MenuEfect.SetDecoration(this.PanelBarraTitulo, BunifuAnimatorNS.DecorationType.None);
             this.PanelBarraTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelBarraTitulo.Location = new System.Drawing.Point(0, 0);
             this.PanelBarraTitulo.Name = "PanelBarraTitulo";
@@ -181,6 +230,7 @@
             // 
             this.btnNormal.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNormal.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuEfect.SetDecoration(this.btnNormal, BunifuAnimatorNS.DecorationType.None);
             this.btnNormal.FlatAppearance.BorderSize = 0;
             this.btnNormal.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnNormal.Image = ((System.Drawing.Image)(resources.GetObject("btnNormal.Image")));
@@ -197,6 +247,7 @@
             this.btnMinimizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMinimizar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
             this.btnMinimizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuEfect.SetDecoration(this.btnMinimizar, BunifuAnimatorNS.DecorationType.None);
             this.btnMinimizar.FlatAppearance.BorderSize = 0;
             this.btnMinimizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMinimizar.ForeColor = System.Drawing.Color.Cornsilk;
@@ -212,6 +263,7 @@
             // 
             this.btnMaximizar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMaximizar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuEfect.SetDecoration(this.btnMaximizar, BunifuAnimatorNS.DecorationType.None);
             this.btnMaximizar.FlatAppearance.BorderSize = 0;
             this.btnMaximizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMaximizar.Image = ((System.Drawing.Image)(resources.GetObject("btnMaximizar.Image")));
@@ -226,6 +278,7 @@
             // 
             this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuEfect.SetDecoration(this.btnCerrar, BunifuAnimatorNS.DecorationType.None);
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
@@ -236,55 +289,31 @@
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
-            // tmExpandirMenu
-            // 
-            this.tmExpandirMenu.Interval = 15;
-            this.tmExpandirMenu.Tick += new System.EventHandler(this.tmExpandirMenu_Tick);
-            // 
-            // tmContraerMenu
-            // 
-            this.tmContraerMenu.Interval = 15;
-            this.tmContraerMenu.Tick += new System.EventHandler(this.tmContraerMenu_Tick);
-            // 
             // tmFechaHora
             // 
             this.tmFechaHora.Enabled = true;
             this.tmFechaHora.Tick += new System.EventHandler(this.tmFechaHora_Tick);
             // 
-            // panel1
+            // MenuEfect
             // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.panel1.Controls.Add(this.lbFecha);
-            this.panel1.Controls.Add(this.lblHora);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(78, 617);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1022, 100);
-            this.panel1.TabIndex = 7;
-            // 
-            // lbFecha
-            // 
-            this.lbFecha.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbFecha.AutoSize = true;
-            this.lbFecha.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(128)));
-            this.lbFecha.ForeColor = System.Drawing.Color.Black;
-            this.lbFecha.Location = new System.Drawing.Point(760, 71);
-            this.lbFecha.Name = "lbFecha";
-            this.lbFecha.Size = new System.Drawing.Size(224, 20);
-            this.lbFecha.TabIndex = 4;
-            this.lbFecha.Text = "Lunes, 26 de septiembre 2018";
-            // 
-            // lblHora
-            // 
-            this.lblHora.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.lblHora.AutoSize = true;
-            this.lblHora.Font = new System.Drawing.Font("Microsoft Sans Serif", 35.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblHora.ForeColor = System.Drawing.Color.Black;
-            this.lblHora.Location = new System.Drawing.Point(767, 10);
-            this.lblHora.Name = "lblHora";
-            this.lblHora.Size = new System.Drawing.Size(205, 54);
-            this.lblHora.TabIndex = 1;
-            this.lblHora.Text = "21:49:45";
+            this.MenuEfect.AnimationType = BunifuAnimatorNS.AnimationType.Particles;
+            this.MenuEfect.Cursor = null;
+            animation2.AnimateOnlyDifferences = true;
+            animation2.BlindCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.BlindCoeff")));
+            animation2.LeafCoeff = 0F;
+            animation2.MaxTime = 1F;
+            animation2.MinTime = 0F;
+            animation2.MosaicCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicCoeff")));
+            animation2.MosaicShift = ((System.Drawing.PointF)(resources.GetObject("animation2.MosaicShift")));
+            animation2.MosaicSize = 1;
+            animation2.Padding = new System.Windows.Forms.Padding(100, 50, 100, 150);
+            animation2.RotateCoeff = 0F;
+            animation2.RotateLimit = 0F;
+            animation2.ScaleCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.ScaleCoeff")));
+            animation2.SlideCoeff = ((System.Drawing.PointF)(resources.GetObject("animation2.SlideCoeff")));
+            animation2.TimeCoeff = 2F;
+            animation2.TransparencyCoeff = 0F;
+            this.MenuEfect.DefaultAnimation = animation2;
             // 
             // FormMenuPrincipal
             // 
@@ -293,20 +322,21 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.ClientSize = new System.Drawing.Size(1100, 717);
             this.Controls.Add(this.panelContenedorPrincipal);
+            this.MenuEfect.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(680, 500);
             this.Name = "FormMenuPrincipal";
-            this.Text = "Form1";
+            this.Text = "SISTEMA DE INVENTARIO";
             this.TransparencyKey = System.Drawing.Color.Transparent;
             this.Load += new System.EventHandler(this.FormMenuPrincipal_Load);
             this.panelContenedorPrincipal.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.panelMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.btnMenu)).EndInit();
             this.PanelBarraTitulo.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -320,17 +350,16 @@
         private System.Windows.Forms.Panel panelContenedorForm;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnMRP;
-        private System.Windows.Forms.Timer tmExpandirMenu;
-        private System.Windows.Forms.Timer tmContraerMenu;
         private System.Windows.Forms.Timer tmFechaHora;
         private System.Windows.Forms.Button btnMinimizar;
-        private System.Windows.Forms.PictureBox btnMenu;
         private System.Windows.Forms.Button btnMaximizar;
         private System.Windows.Forms.Button btnPQ;
         private System.Windows.Forms.Button btnPlanAgregado;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label lbFecha;
         private System.Windows.Forms.Label lblHora;
+        private BunifuAnimatorNS.BunifuTransition MenuEfect;
+        private Bunifu.Framework.UI.BunifuImageButton btnMenu;
     }
 }
 
