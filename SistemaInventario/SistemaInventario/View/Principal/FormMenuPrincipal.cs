@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaInventario.Controller.MRPController;
 
 namespace SistemaInventario
 {
@@ -180,7 +181,18 @@ namespace SistemaInventario
             fm.FormClosed += new FormClosedEventHandler(VentanaLogo);
             AbrirFormEnPanel(fm);*/
         }
-        
+
+        private void btnMRP_Click(object sender, EventArgs e)
+        {
+            foreach (DataRow dataRow in MRPcontrol.MostrarCosto().Rows)
+            {
+                foreach (var item in dataRow.ItemArray)
+                {
+                   MessageBox.Show(item.ToString());
+                }
+            }
+        }
+
 
         //METODO PARA HORA Y FECHA ACTUAL ----------------------------------------------------------
         private void tmFechaHora_Tick(object sender, EventArgs e)

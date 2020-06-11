@@ -51,6 +51,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\MRPController\MRPcontrol.cs" />
+    <Compile Include="Model\ConeccionSQL\Coneccion.cs" />
+    <Compile Include="Model\MRP Pojo\MRPPojo.cs" />
     <Compile Include="View\Principal\FormMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,9 +97,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\" />
     <Folder Include="img\" />
-    <Folder Include="Model\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
