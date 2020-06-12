@@ -10,6 +10,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaInventario.Controller.MRPController;
+ 
+
 namespace SistemaInventario
 {
     public partial class FormMenuPrincipal : Form
@@ -149,11 +151,11 @@ namespace SistemaInventario
         private void AbrirFormEnPanel(object formHijo)
         {
             if (this.panelContenedorForm.Controls.Count > 0)
-                this.panelContenedorForm.Controls.RemoveAt(0);
+            this.panelContenedorForm.Controls.RemoveAt(0);
             Form fh = formHijo as Form;
             fh.TopLevel = false;
             fh.FormBorderStyle = FormBorderStyle.None;
-            fh.Dock = DockStyle.Fill;            
+            fh.Dock = DockStyle.Fill;
             this.panelContenedorForm.Controls.Add(fh);
             this.panelContenedorForm.Tag = fh;
             fh.Show();
@@ -183,7 +185,7 @@ namespace SistemaInventario
 
         private void btnMRP_Click(object sender, EventArgs e)
         {
-            
+
             /*foreach (DataRow dataRow in MRPcontrol.MostrarLxL().Rows)
             {
                 foreach (var item in dataRow.ItemArray)
@@ -191,9 +193,10 @@ namespace SistemaInventario
                     MessageBox.Show(item.ToString());
                 }
             }*/
-            MessageBox.Show("hola");
 
-            Form1 f = new Form1();
+            MenuMRP f = new MenuMRP();
+            f.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            AbrirFormEnPanel(f);
         }
 
 

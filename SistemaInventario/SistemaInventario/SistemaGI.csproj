@@ -68,6 +68,18 @@
     <Compile Include="View\Principal\VentanaLogo.Designer.cs">
       <DependentUpon>VentanaLogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewMRP\LotexLote.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewMRP\LotexLote.Designer.cs">
+      <DependentUpon>LotexLote.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewMRP\MenuMRP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewMRP\MenuMRP.designer.cs">
+      <DependentUpon>MenuMRP.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="View\Principal\FormMenuPrincipal.resx">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -82,6 +94,12 @@
     </Compile>
     <EmbeddedResource Include="View\Principal\VentanaLogo.resx">
       <DependentUpon>VentanaLogo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewMRP\LotexLote.resx">
+      <DependentUpon>LotexLote.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewMRP\MenuMRP.resx">
+      <DependentUpon>MenuMRP.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
