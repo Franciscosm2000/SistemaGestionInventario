@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaInventario.Plan_Agregado;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -180,7 +181,14 @@ namespace SistemaInventario
             fm.FormClosed += new FormClosedEventHandler(VentanaLogo);
             AbrirFormEnPanel(fm);*/
         }
-        
+
+        private void btnPlanAgregado_Click(object sender, EventArgs e)
+        {
+            Prplan fm = new Prplan();
+            fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            AbrirFormEnPanel(fm);
+        }
+
 
         //METODO PARA HORA Y FECHA ACTUAL ----------------------------------------------------------
         private void tmFechaHora_Tick(object sender, EventArgs e)

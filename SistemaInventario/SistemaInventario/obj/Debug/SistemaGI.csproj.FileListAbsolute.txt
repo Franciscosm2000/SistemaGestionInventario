@@ -10,3 +10,4 @@ C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInven
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaGI.csproj.CopyComplete
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.exe
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.pdb
+C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.Plan_Agregado.Prplan.resources
