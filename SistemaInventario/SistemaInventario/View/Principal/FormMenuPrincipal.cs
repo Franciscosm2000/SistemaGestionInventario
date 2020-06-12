@@ -9,6 +9,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaInventario.Plan_Agregado;
 
 namespace SistemaInventario
 {
@@ -180,7 +181,20 @@ namespace SistemaInventario
             fm.FormClosed += new FormClosedEventHandler(VentanaLogo);
             AbrirFormEnPanel(fm);*/
         }
-        
+
+        private void panelContenedorForm_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btnMRP_Click(object sender, EventArgs e)
+        {
+            Prplan fm = new Prplan();
+            fm.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            AbrirFormEnPanel(fm);
+
+        }
+
 
         //METODO PARA HORA Y FECHA ACTUAL ----------------------------------------------------------
         private void tmFechaHora_Tick(object sender, EventArgs e)

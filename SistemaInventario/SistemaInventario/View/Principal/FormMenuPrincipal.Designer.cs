@@ -116,6 +116,7 @@
             this.panelContenedorForm.Name = "panelContenedorForm";
             this.panelContenedorForm.Size = new System.Drawing.Size(1022, 674);
             this.panelContenedorForm.TabIndex = 6;
+            this.panelContenedorForm.Paint += new System.Windows.Forms.PaintEventHandler(this.panelContenedorForm_Paint);
             // 
             // panelMenu
             // 
@@ -210,6 +211,7 @@
             this.btnMRP.Text = "         MRP";
             this.btnMRP.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnMRP.UseVisualStyleBackColor = true;
+            this.btnMRP.Click += new System.EventHandler(this.btnMRP_Click);
             // 
             // PanelBarraTitulo
             // 
