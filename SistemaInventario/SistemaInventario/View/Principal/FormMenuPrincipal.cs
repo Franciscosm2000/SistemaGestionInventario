@@ -184,12 +184,17 @@ namespace SistemaInventario
 
         private void btnMRP_Click(object sender, EventArgs e)
         {
-            foreach (DataRow dataRow in MRPcontrol.MostrarCosto().Rows)
+            for (int i=1; i<=12; i++)
+            {
+            
+            foreach (DataRow dataRow in MRPcontrol.MostrarLxL().Rows)
             {
                 foreach (var item in dataRow.ItemArray)
                 {
-                   MessageBox.Show(item.ToString());
+                    MessageBox.Show(item.ToString());
                 }
+            }
+            MessageBox.Show("hola");
             }
         }
 

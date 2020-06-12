@@ -61,7 +61,7 @@ namespace SistemaInventario.Model.MRP_Pojo
                         switch (tipo)
                         {
                             case "LXL":
-                                proceso = "MetodoLXL";
+                                proceso = "lotePorlote";
                                 break;
                             case "EOQ":
                                 proceso = "MetodoPOQ";
@@ -116,5 +116,35 @@ namespace SistemaInventario.Model.MRP_Pojo
             return res;
         }
 
+        public DataTable LotexLoteCompleto()
+        {
+            DataTable res = new DataTable();
+
+            try
+            {
+                using (var coneccion = GetConnection())
+                {
+                    coneccion.Open();
+                    using (var comando = new SqlCommand())
+                    {
+                        comando.Connection = coneccion;
+
+
+                        comando.CommandText = "lotePorloteCompleto";
+                        comando.CommandType = CommandType.StoredProcedure;
+                        comando.Parameters.AddWithValue("@idProducto", 1);
+                        SqlDataAdapter adp = new SqlDataAdapter(comando);
+                        adp.Fill(res);
+                        comando.Parameters.Clear();
+
+                    }//fin segundo using
+                }//fin primer using
+            }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+
+            return res;
+        }
+
+        
     }
 }

@@ -24,5 +24,16 @@ namespace SistemaInventario.Controller.MRPController
 
             return m.MostrarCosto();
         }
+
+        //tabla completa lxl
+
+        public static DataTable MostrarLxL()
+        {
+            MRPPojo m = new MRPPojo();
+
+            return m.LotexLoteCompleto();
+        }
+
+
     }
 }
