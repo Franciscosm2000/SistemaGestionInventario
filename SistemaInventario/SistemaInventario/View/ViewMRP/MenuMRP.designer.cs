@@ -38,33 +38,33 @@
             this.panel11 = new System.Windows.Forms.Panel();
             this.panel10 = new System.Windows.Forms.Panel();
             this.panel9 = new System.Windows.Forms.Panel();
-            this.btnMRP = new System.Windows.Forms.Button();
+            this.btnLxL = new System.Windows.Forms.Button();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel7 = new System.Windows.Forms.Panel();
-            this.btnLxL = new System.Windows.Forms.Button();
+            this.btnEOQ = new System.Windows.Forms.Button();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.panel14 = new System.Windows.Forms.Panel();
             this.panel15 = new System.Windows.Forms.Panel();
             this.panel13 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.btnEOQ = new System.Windows.Forms.Button();
+            this.btnPOQ = new System.Windows.Forms.Button();
             this.panel18 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.label2 = new System.Windows.Forms.Label();
             this.panel17 = new System.Windows.Forms.Panel();
             this.panel16 = new System.Windows.Forms.Panel();
             this.panel12 = new System.Windows.Forms.Panel();
-            this.btnPOQ = new System.Windows.Forms.Button();
+            this.btnCostoMetodos = new System.Windows.Forms.Button();
             this.panel21 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.label3 = new System.Windows.Forms.Label();
             this.panel20 = new System.Windows.Forms.Panel();
             this.panel19 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.pnl_Center.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -127,7 +127,7 @@
             this.panel5.Controls.Add(this.panel11);
             this.panel5.Controls.Add(this.panel10);
             this.panel5.Controls.Add(this.panel9);
-            this.panel5.Controls.Add(this.btnMRP);
+            this.panel5.Controls.Add(this.btnLxL);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(3, 3);
             this.panel5.Name = "panel5";
@@ -154,11 +154,13 @@
             // 
             this.d.AutoSize = true;
             this.d.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.d.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.d.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.d.Location = new System.Drawing.Point(3, 0);
             this.d.Name = "d";
             this.d.Size = new System.Drawing.Size(301, 48);
             this.d.TabIndex = 0;
-            this.d.Text = "Hora Reloj Mamon";
+            this.d.Text = "Lote Por Lote";
             this.d.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel11
@@ -185,18 +187,20 @@
             this.panel9.Size = new System.Drawing.Size(67, 197);
             this.panel9.TabIndex = 2;
             // 
-            // btnMRP
+            // btnLxL
             // 
-            this.btnMRP.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnMRP.BackgroundImage")));
-            this.btnMRP.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnMRP.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnMRP.FlatAppearance.BorderSize = 0;
-            this.btnMRP.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMRP.Location = new System.Drawing.Point(0, 0);
-            this.btnMRP.Name = "btnMRP";
-            this.btnMRP.Size = new System.Drawing.Size(454, 197);
-            this.btnMRP.TabIndex = 0;
-            this.btnMRP.UseVisualStyleBackColor = true;
+            this.btnLxL.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLxL.BackgroundImage")));
+            this.btnLxL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnLxL.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnLxL.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnLxL.FlatAppearance.BorderSize = 0;
+            this.btnLxL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnLxL.Location = new System.Drawing.Point(0, 0);
+            this.btnLxL.Name = "btnLxL";
+            this.btnLxL.Size = new System.Drawing.Size(454, 197);
+            this.btnLxL.TabIndex = 0;
+            this.btnLxL.UseVisualStyleBackColor = true;
+            this.btnLxL.Click += new System.EventHandler(this.btnLxL_Click);
             // 
             // panel6
             // 
@@ -209,7 +213,7 @@
             // 
             // panel7
             // 
-            this.panel7.Controls.Add(this.btnLxL);
+            this.panel7.Controls.Add(this.btnEOQ);
             this.panel7.Controls.Add(this.tableLayoutPanel3);
             this.panel7.Controls.Add(this.panel14);
             this.panel7.Controls.Add(this.panel15);
@@ -220,18 +224,19 @@
             this.panel7.Size = new System.Drawing.Size(454, 197);
             this.panel7.TabIndex = 0;
             // 
-            // btnLxL
+            // btnEOQ
             // 
-            this.btnLxL.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnLxL.BackgroundImage")));
-            this.btnLxL.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnLxL.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnLxL.FlatAppearance.BorderSize = 0;
-            this.btnLxL.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnLxL.Location = new System.Drawing.Point(67, 45);
-            this.btnLxL.Name = "btnLxL";
-            this.btnLxL.Size = new System.Drawing.Size(307, 104);
-            this.btnLxL.TabIndex = 10;
-            this.btnLxL.UseVisualStyleBackColor = true;
+            this.btnEOQ.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEOQ.BackgroundImage")));
+            this.btnEOQ.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEOQ.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEOQ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEOQ.FlatAppearance.BorderSize = 0;
+            this.btnEOQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnEOQ.Location = new System.Drawing.Point(67, 45);
+            this.btnEOQ.Name = "btnEOQ";
+            this.btnEOQ.Size = new System.Drawing.Size(307, 104);
+            this.btnEOQ.TabIndex = 10;
+            this.btnEOQ.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3
             // 
@@ -253,11 +258,12 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(3, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(301, 48);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Servicio al Cliente";
+            this.label1.Text = "Metodo EOQ";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel14
@@ -286,7 +292,7 @@
             // 
             // panel8
             // 
-            this.panel8.Controls.Add(this.btnEOQ);
+            this.panel8.Controls.Add(this.btnPOQ);
             this.panel8.Controls.Add(this.panel18);
             this.panel8.Controls.Add(this.tableLayoutPanel4);
             this.panel8.Controls.Add(this.panel17);
@@ -297,18 +303,19 @@
             this.panel8.Size = new System.Drawing.Size(454, 197);
             this.panel8.TabIndex = 2;
             // 
-            // btnEOQ
+            // btnPOQ
             // 
-            this.btnEOQ.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnEOQ.BackgroundImage")));
-            this.btnEOQ.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnEOQ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnEOQ.FlatAppearance.BorderSize = 0;
-            this.btnEOQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnEOQ.Location = new System.Drawing.Point(67, 45);
-            this.btnEOQ.Name = "btnEOQ";
-            this.btnEOQ.Size = new System.Drawing.Size(307, 104);
-            this.btnEOQ.TabIndex = 9;
-            this.btnEOQ.UseVisualStyleBackColor = true;
+            this.btnPOQ.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPOQ.BackgroundImage")));
+            this.btnPOQ.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnPOQ.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPOQ.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnPOQ.FlatAppearance.BorderSize = 0;
+            this.btnPOQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPOQ.Location = new System.Drawing.Point(67, 45);
+            this.btnPOQ.Name = "btnPOQ";
+            this.btnPOQ.Size = new System.Drawing.Size(307, 104);
+            this.btnPOQ.TabIndex = 9;
+            this.btnPOQ.UseVisualStyleBackColor = true;
             // 
             // panel18
             // 
@@ -338,11 +345,12 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label2.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(301, 48);
             this.label2.TabIndex = 0;
-            this.label2.Text = "Registro de Inventarios";
+            this.label2.Text = "Metodo POQ\r\n";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel17
@@ -363,7 +371,7 @@
             // 
             // panel12
             // 
-            this.panel12.Controls.Add(this.btnPOQ);
+            this.panel12.Controls.Add(this.btnCostoMetodos);
             this.panel12.Controls.Add(this.panel21);
             this.panel12.Controls.Add(this.tableLayoutPanel5);
             this.panel12.Controls.Add(this.panel20);
@@ -374,18 +382,19 @@
             this.panel12.Size = new System.Drawing.Size(454, 197);
             this.panel12.TabIndex = 3;
             // 
-            // btnPOQ
+            // btnCostoMetodos
             // 
-            this.btnPOQ.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnPOQ.BackgroundImage")));
-            this.btnPOQ.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.btnPOQ.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnPOQ.FlatAppearance.BorderSize = 0;
-            this.btnPOQ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPOQ.Location = new System.Drawing.Point(67, 45);
-            this.btnPOQ.Name = "btnPOQ";
-            this.btnPOQ.Size = new System.Drawing.Size(307, 104);
-            this.btnPOQ.TabIndex = 11;
-            this.btnPOQ.UseVisualStyleBackColor = true;
+            this.btnCostoMetodos.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnCostoMetodos.BackgroundImage")));
+            this.btnCostoMetodos.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnCostoMetodos.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCostoMetodos.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnCostoMetodos.FlatAppearance.BorderSize = 0;
+            this.btnCostoMetodos.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCostoMetodos.Location = new System.Drawing.Point(67, 45);
+            this.btnCostoMetodos.Name = "btnCostoMetodos";
+            this.btnCostoMetodos.Size = new System.Drawing.Size(307, 104);
+            this.btnCostoMetodos.TabIndex = 11;
+            this.btnCostoMetodos.UseVisualStyleBackColor = true;
             // 
             // panel21
             // 
@@ -415,11 +424,12 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(3, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(301, 48);
             this.label3.TabIndex = 0;
-            this.label3.Text = "Gestion Usuarios";
+            this.label3.Text = "Costos Metodos\r\n";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panel20
@@ -446,6 +456,14 @@
             this.panel4.Size = new System.Drawing.Size(984, 100);
             this.panel4.TabIndex = 3;
             // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel3.Location = new System.Drawing.Point(1184, 100);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(200, 506);
+            this.panel3.TabIndex = 2;
+            // 
             // panel2
             // 
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
@@ -461,14 +479,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(200, 606);
             this.panel1.TabIndex = 0;
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel3.Location = new System.Drawing.Point(1184, 100);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(200, 506);
-            this.panel3.TabIndex = 2;
             // 
             // MenuMRP
             // 
@@ -514,25 +524,25 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel8;
         private System.Windows.Forms.Panel panel12;
-        private System.Windows.Forms.Button btnLxL;
+        private System.Windows.Forms.Button btnEOQ;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel14;
         private System.Windows.Forms.Panel panel15;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.Button btnEOQ;
+        private System.Windows.Forms.Button btnPOQ;
         private System.Windows.Forms.Panel panel18;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel17;
         private System.Windows.Forms.Panel panel16;
-        private System.Windows.Forms.Button btnPOQ;
+        private System.Windows.Forms.Button btnCostoMetodos;
         private System.Windows.Forms.Panel panel21;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Panel panel20;
         private System.Windows.Forms.Panel panel19;
-        private System.Windows.Forms.Button btnMRP;
+        private System.Windows.Forms.Button btnLxL;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel1;
     }

@@ -148,7 +148,7 @@ namespace SistemaInventario
  
 
         //METODO PARA ABRIR FORM DENTRO DE PANEL-----------------------------------------------------
-        private void AbrirFormEnPanel(object formHijo)
+        public void AbrirFormEnPanel(object formHijo)
         {
             if (this.panelContenedorForm.Controls.Count > 0)
             this.panelContenedorForm.Controls.RemoveAt(0);

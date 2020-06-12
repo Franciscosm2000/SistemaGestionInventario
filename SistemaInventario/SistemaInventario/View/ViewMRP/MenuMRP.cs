@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SistemaInventario.View.ViewMRP;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,21 @@ namespace SistemaInventario
         {
             InitializeComponent();
         }
- 
+
+        FormMenuPrincipal obj = new FormMenuPrincipal();
+
+        private void MostrarFormMRPoAlCerrarForms(object sender, FormClosedEventArgs e)
+        {
+          obj.AbrirFormEnPanel( new MenuMRP());
+        }
+
+        private void btnLxL_Click(object sender, EventArgs e)
+        {
+            LotexLote f = new LotexLote();
+            f.FormClosed += new FormClosedEventHandler(MostrarFormMRPoAlCerrarForms);
+            obj.AbrirFormEnPanel(f);
+            f.Show();
+            MessageBox.Show("click");
+        }
     }
 }
