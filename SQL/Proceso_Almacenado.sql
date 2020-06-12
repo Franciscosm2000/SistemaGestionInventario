@@ -36,7 +36,7 @@ exec Registro_inventario
 											/*METODO LOTE POR LOTE*/					
 
 
-create proc lotePorlote
+create proc lotePorloteCompleto
 @idProducto int
 as
 	/*tabla temporal para guardar los datos del padre y obtener las necesidades brutas */
@@ -236,7 +236,10 @@ as
 			drop table #Ordenes
 go
 
-exec lotePorlote 1
+exec lotePorloteCompleto 1
+
+
+/*lote por lote solo producto principal*/
 
 
 /*Funcion de necesidades netas*/
