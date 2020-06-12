@@ -57,24 +57,9 @@
     <Compile Include="View\Principal\FormMenuPrincipal.Designer.cs">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
     </Compile>
-    <Compile Include="Plan Agregado\Prplan.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Plan Agregado\Prplan.Designer.cs">
-      <DependentUpon>Prplan.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-<<<<<<< HEAD:SistemaInventario/SistemaInventario/View.csproj
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="VentanaLogo.cs">
-=======
     <Compile Include="View\Principal\VentanaLogo.cs">
->>>>>>> c5ae1fa2da2763c71735e17344d0fe54c0742c3f:SistemaInventario/SistemaInventario/SistemaGI.csproj
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Principal\VentanaLogo.Designer.cs">
@@ -83,23 +68,16 @@
     <EmbeddedResource Include="View\Principal\FormMenuPrincipal.resx">
       <DependentUpon>FormMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Plan Agregado\Prplan.resx">
-      <DependentUpon>Prplan.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-<<<<<<< HEAD:SistemaInventario/SistemaInventario/View.csproj
-    <EmbeddedResource Include="VentanaLogo.resx">
-=======
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <EmbeddedResource Include="View\Principal\VentanaLogo.resx">
->>>>>>> c5ae1fa2da2763c71735e17344d0fe54c0742c3f:SistemaInventario/SistemaInventario/SistemaGI.csproj
       <DependentUpon>VentanaLogo.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -118,40 +96,7 @@
   <ItemGroup>
     <Folder Include="Controller\" />
     <Folder Include="img\" />
-<<<<<<< HEAD:SistemaInventario/SistemaInventario/View.csproj
-    <Folder Include="Resources\" />
-  </ItemGroup>
-  <ItemGroup>
-    <COMReference Include="Microsoft.Office.Core">
-      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
-      <VersionMajor>2</VersionMajor>
-      <VersionMinor>8</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="Microsoft.Office.Interop.Excel">
-      <Guid>{00020813-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>1</VersionMajor>
-      <VersionMinor>9</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-    <COMReference Include="VBIDE">
-      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
-      <VersionMajor>5</VersionMajor>
-      <VersionMinor>3</VersionMinor>
-      <Lcid>0</Lcid>
-      <WrapperTool>primary</WrapperTool>
-      <Isolated>False</Isolated>
-      <EmbedInteropTypes>True</EmbedInteropTypes>
-    </COMReference>
-=======
     <Folder Include="Model\" />
->>>>>>> c5ae1fa2da2763c71735e17344d0fe54c0742c3f:SistemaInventario/SistemaInventario/SistemaGI.csproj
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
