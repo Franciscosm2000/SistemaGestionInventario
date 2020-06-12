@@ -10,7 +10,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaInventario.Controller.MRPController;
-
 namespace SistemaInventario
 {
     public partial class FormMenuPrincipal : Form
@@ -184,18 +183,17 @@ namespace SistemaInventario
 
         private void btnMRP_Click(object sender, EventArgs e)
         {
-            for (int i=1; i<=12; i++)
-            {
             
-            foreach (DataRow dataRow in MRPcontrol.MostrarLxL().Rows)
+            /*foreach (DataRow dataRow in MRPcontrol.MostrarLxL().Rows)
             {
                 foreach (var item in dataRow.ItemArray)
                 {
                     MessageBox.Show(item.ToString());
                 }
-            }
+            }*/
             MessageBox.Show("hola");
-            }
+
+            Form1 f = new Form1();
         }
 
 

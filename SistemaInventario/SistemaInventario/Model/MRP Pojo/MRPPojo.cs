@@ -129,7 +129,7 @@ namespace SistemaInventario.Model.MRP_Pojo
                     {
                         comando.Connection = coneccion;
 
-
+                            
                         comando.CommandText = "lotePorloteCompleto";
                         comando.CommandType = CommandType.StoredProcedure;
                         comando.Parameters.AddWithValue("@idProducto", 1);
