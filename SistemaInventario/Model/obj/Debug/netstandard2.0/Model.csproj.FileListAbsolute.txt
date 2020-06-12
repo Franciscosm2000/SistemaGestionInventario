@@ -34,3 +34,11 @@ C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\Model\obj\De
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\Model\obj\Debug\netstandard2.0\Model.AssemblyInfo.cs
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\Model\obj\Debug\netstandard2.0\Model.dll
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\Model\obj\Debug\netstandard2.0\Model.pdb
+C:\Users\aflor\Desktop\Product\SistemaGestionInventario\SistemaInventario\Model\bin\Debug\netstandard2.0\Model.deps.json
+C:\Users\aflor\Desktop\Product\SistemaGestionInventario\SistemaInventario\Model\bin\Debug\netstandard2.0\Model.dll
+C:\Users\aflor\Desktop\Product\SistemaGestionInventario\SistemaInventario\Model\bin\Debug\netstandard2.0\Model.pdb
+C:\Users\aflor\Desktop\Product\SistemaGestionInventario\SistemaInventario\Model\obj\Debug\netstandard2.0\Model.csprojAssemblyReference.cache
+C:\Users\aflor\Desktop\Product\SistemaGestionInventario\SistemaInventario\Model\obj\Debug\netstandard2.0\Model.AssemblyInfoInputs.cache
+C:\Users\aflor\Desktop\Product\SistemaGestionInventario\SistemaInventario\Model\obj\Debug\netstandard2.0\Model.AssemblyInfo.cs
+C:\Users\aflor\Desktop\Product\SistemaGestionInventario\SistemaInventario\Model\obj\Debug\netstandard2.0\Model.dll
+C:\Users\aflor\Desktop\Product\SistemaGestionInventario\SistemaInventario\Model\obj\Debug\netstandard2.0\Model.pdb
