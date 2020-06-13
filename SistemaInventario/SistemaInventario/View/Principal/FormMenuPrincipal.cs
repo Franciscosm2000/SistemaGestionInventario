@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaInventario.Controller.MRPController;
- 
+using SistemaInventario.View.ViewMRP;
 
 namespace SistemaInventario
 {
@@ -148,16 +148,16 @@ namespace SistemaInventario
  
 
         //METODO PARA ABRIR FORM DENTRO DE PANEL-----------------------------------------------------
-        public void AbrirFormEnPanel(object formHijo)
+        private void AbrirFormEnPanel(object formHijo)
         {
-            if (this.panelContenedorForm.Controls.Count > 0)
-            this.panelContenedorForm.Controls.RemoveAt(0);
+            if (FormMenuPrincipal.panelContenedorForm.Controls.Count > 0)
+                FormMenuPrincipal.panelContenedorForm.Controls.RemoveAt(0);
             Form fh = formHijo as Form;
             fh.TopLevel = false;
             fh.FormBorderStyle = FormBorderStyle.None;
             fh.Dock = DockStyle.Fill;
-            this.panelContenedorForm.Controls.Add(fh);
-            this.panelContenedorForm.Tag = fh;
+            FormMenuPrincipal.panelContenedorForm.Controls.Add(fh);
+            FormMenuPrincipal.panelContenedorForm.Tag = fh;
             fh.Show();
         }
         //METODO PARA MOSTRAR FORMULARIO DE LOGO Al INICIAR ----------------------------------------------------------
@@ -195,6 +195,13 @@ namespace SistemaInventario
             }*/
 
             MenuMRP f = new MenuMRP();
+            f.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            AbrirFormEnPanel(f);
+        }
+
+        private void btnPlanAgregado_Click(object sender, EventArgs e)
+        {
+            LotexLote f = new LotexLote();
             f.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             AbrirFormEnPanel(f);
         }

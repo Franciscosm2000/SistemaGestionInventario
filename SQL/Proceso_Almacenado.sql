@@ -33,10 +33,36 @@ go
 
 exec Registro_inventario
 																					
-											/*METODO LOTE POR LOTE*/					
+											/*METODO LOTE POR LOTE*/				
+		
+create table TemporalLote
+(
+	id int ,
+	material varchar(100),
+	necesidadesBrutas int,
+	recepcionesProgramadas int,
+	disponible int,
+	necesidadesNetas int,
+	lanzamientoOrden int,
+)
 
+alter proc MostrarTablaCompletaLote
+as
+	exec  lotePorloteCompleto 1
 
-create proc lotePorloteCompleto
+	select material as Material,
+	necesidadesBrutas as [Necesidades Brutas],
+	recepcionesProgramadas as [Recepciones Programadas],
+	disponible as [Disponible],
+	necesidadesNetas as [Necesidades Netas],
+	lanzamientoOrden as [Lanzamiento de Orden] from TemporalLote;
+
+	delete TemporalLote;
+go
+
+exec MostrarTablaCompletaLote
+
+alter proc lotePorloteCompleto
 @idProducto int
 as
 	/*tabla temporal para guardar los datos del padre y obtener las necesidades brutas */
@@ -226,7 +252,9 @@ as
 				set @aux2 = @aux2 + 1;
 			end
 --------------------------------------------------------------------------------------------------------------------
-			select *from #Temporal;
+			insert into  TemporalLote
+			 select *from #Temporal;
+
 			drop table #Temporal --elimacion de tabla temporal
 
 			set @idMaterial = @idMaterial + 1;

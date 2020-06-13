@@ -35,7 +35,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.lbFecha = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
-            this.panelContenedorForm = new System.Windows.Forms.Panel();
+            FormMenuPrincipal.panelContenedorForm = new System.Windows.Forms.Panel();
             this.panelMenu = new System.Windows.Forms.Panel();
             this.btnMenu = new Bunifu.Framework.UI.BunifuImageButton();
             this.btnPQ = new System.Windows.Forms.Button();
@@ -59,7 +59,7 @@
             // 
             this.panelContenedorPrincipal.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
             this.panelContenedorPrincipal.Controls.Add(this.panel1);
-            this.panelContenedorPrincipal.Controls.Add(this.panelContenedorForm);
+            this.panelContenedorPrincipal.Controls.Add(FormMenuPrincipal.panelContenedorForm);
             this.panelContenedorPrincipal.Controls.Add(this.panelMenu);
             this.panelContenedorPrincipal.Controls.Add(this.PanelBarraTitulo);
             this.MenuEfect.SetDecoration(this.panelContenedorPrincipal, BunifuAnimatorNS.DecorationType.None);
@@ -109,13 +109,13 @@
             // 
             // panelContenedorForm
             // 
-            this.panelContenedorForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
-            this.MenuEfect.SetDecoration(this.panelContenedorForm, BunifuAnimatorNS.DecorationType.None);
-            this.panelContenedorForm.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContenedorForm.Location = new System.Drawing.Point(78, 43);
-            this.panelContenedorForm.Name = "panelContenedorForm";
-            this.panelContenedorForm.Size = new System.Drawing.Size(1022, 674);
-            this.panelContenedorForm.TabIndex = 6;
+            FormMenuPrincipal.panelContenedorForm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.MenuEfect.SetDecoration(FormMenuPrincipal.panelContenedorForm, BunifuAnimatorNS.DecorationType.None);
+            FormMenuPrincipal.panelContenedorForm.Dock = System.Windows.Forms.DockStyle.Fill;
+            FormMenuPrincipal.panelContenedorForm.Location = new System.Drawing.Point(78, 43);
+            FormMenuPrincipal.panelContenedorForm.Name = "panelContenedorForm";
+            FormMenuPrincipal.panelContenedorForm.Size = new System.Drawing.Size(1022, 674);
+            FormMenuPrincipal.panelContenedorForm.TabIndex = 6;
             // 
             // panelMenu
             // 
@@ -133,13 +133,12 @@
             // 
             // btnMenu
             // 
-            this.btnMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(26)))), ((int)(((byte)(32)))), ((int)(((byte)(40)))));
             this.btnMenu.Cursor = System.Windows.Forms.Cursors.Hand;
             this.MenuEfect.SetDecoration(this.btnMenu, BunifuAnimatorNS.DecorationType.BottomMirror);
             this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
             this.btnMenu.ImageActive = null;
-            this.btnMenu.Location = new System.Drawing.Point(44, 6);
+            this.btnMenu.Location = new System.Drawing.Point(3, 6);
             this.btnMenu.Name = "btnMenu";
             this.btnMenu.Size = new System.Drawing.Size(35, 35);
             this.btnMenu.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -189,6 +188,7 @@
             this.btnPlanAgregado.Text = "   Plan Agregado";
             this.btnPlanAgregado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPlanAgregado.UseVisualStyleBackColor = true;
+            this.btnPlanAgregado.Click += new System.EventHandler(this.btnPlanAgregado_Click);
             // 
             // btnMRP
             // 
@@ -348,7 +348,7 @@
         private System.Windows.Forms.Panel PanelBarraTitulo;
         private System.Windows.Forms.Button btnNormal;
         private System.Windows.Forms.Button btnCerrar;
-        private System.Windows.Forms.Panel panelContenedorForm;
+        public static System.Windows.Forms.Panel panelContenedorForm;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnMRP;
         private System.Windows.Forms.Timer tmFechaHora;

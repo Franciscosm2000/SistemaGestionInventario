@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using SistemaInventario.Controller.MRPController;
 
 namespace SistemaInventario.View.ViewMRP
 {
@@ -15,6 +16,8 @@ namespace SistemaInventario.View.ViewMRP
         public LotexLote()
         {
             InitializeComponent();
+            dgvLxL.DataSource = null;
+            dgvLxL.DataSource = MRPcontrol.MostrarLxL();
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)

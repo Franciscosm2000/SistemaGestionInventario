@@ -47,7 +47,7 @@ namespace SistemaInventario.Model.MRP_Pojo
        public DataTable MostrarDatos(string tipo)
             {
                 DataTable res = new DataTable();
-                string proceso = null;
+                string proceso = "";
 
             try
                 {
@@ -130,12 +130,10 @@ namespace SistemaInventario.Model.MRP_Pojo
                         comando.Connection = coneccion;
 
                             
-                        comando.CommandText = "lotePorloteCompleto";
+                        comando.CommandText = "MostrarTablaCompletaLote";
                         comando.CommandType = CommandType.StoredProcedure;
-                        comando.Parameters.AddWithValue("@idProducto", 1);
                         SqlDataAdapter adp = new SqlDataAdapter(comando);
                         adp.Fill(res);
-                        comando.Parameters.Clear();
 
                     }//fin segundo using
                 }//fin primer using
