@@ -40,6 +40,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Management" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -68,6 +69,18 @@
     <Compile Include="View\Principal\VentanaLogo.Designer.cs">
       <DependentUpon>VentanaLogo.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\ViewMRP\Costos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewMRP\Costos.Designer.cs">
+      <DependentUpon>Costos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewMRP\EOQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewMRP\EOQ.Designer.cs">
+      <DependentUpon>EOQ.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\ViewMRP\LotexLote.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -79,6 +92,12 @@
     </Compile>
     <Compile Include="View\ViewMRP\MenuMRP.designer.cs">
       <DependentUpon>MenuMRP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ViewMRP\POQ.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ViewMRP\POQ.Designer.cs">
+      <DependentUpon>POQ.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -95,11 +114,20 @@
     <EmbeddedResource Include="View\Principal\VentanaLogo.resx">
       <DependentUpon>VentanaLogo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewMRP\Costos.resx">
+      <DependentUpon>Costos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewMRP\EOQ.resx">
+      <DependentUpon>EOQ.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\ViewMRP\LotexLote.resx">
       <DependentUpon>LotexLote.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\ViewMRP\MenuMRP.resx">
       <DependentUpon>MenuMRP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ViewMRP\POQ.resx">
+      <DependentUpon>POQ.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

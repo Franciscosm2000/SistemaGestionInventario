@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -6,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using SistemaInventario.Model.ConeccionSQL;
 
 namespace SistemaInventario.Model.MRP_Pojo
@@ -143,6 +145,65 @@ namespace SistemaInventario.Model.MRP_Pojo
             return res;
         }
 
-        
+
+        public ArrayList MostrarTipo()
+        {
+            SqlDataReader dr;
+            ArrayList tipo = new ArrayList();
+
+            try
+            {
+                using (var coneccion = GetConnection())
+                {
+                    coneccion.Open();
+                    using (var comando = new SqlCommand())
+                    {
+                        comando.Connection = coneccion;
+                        comando.CommandText = "tablaCosto";
+                        comando.CommandType = CommandType.StoredProcedure;
+                        dr = comando.ExecuteReader();
+
+                        while (dr.Read())
+                        {
+                            tipo.Add(dr.GetString(1));
+                        }
+
+                    }//fin segundo using
+                }//fin primer using
+
+            }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+            return tipo;
+        }
+
+        public ArrayList MostrarDatoCosto()
+        {
+            SqlDataReader dr;
+            ArrayList costo = new ArrayList();
+
+            try
+            {
+                using (var coneccion = GetConnection())
+                {
+                    coneccion.Open();
+                    using (var comando = new SqlCommand())
+                    {
+                        comando.Connection = coneccion;
+                        comando.CommandText = "tablaCosto";
+                        comando.CommandType = CommandType.StoredProcedure;
+                        dr = comando.ExecuteReader();
+
+                        while (dr.Read())
+                        {
+                            costo.Add(dr.GetDouble(4));
+                        }
+
+                    }//fin segundo using
+                }//fin primer using
+
+            }
+            catch (Exception e) { MessageBox.Show(e.Message); }
+            return costo;
+        }
     }
 }

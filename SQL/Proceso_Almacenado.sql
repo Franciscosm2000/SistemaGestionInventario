@@ -50,6 +50,12 @@ alter proc MostrarTablaCompletaLote
 as
 	exec  lotePorloteCompleto 1
 
+			update TemporalLote set necesidadesBrutas = 0  where necesidadesBrutas is null;
+			update TemporalLote set recepcionesProgramadas = 0  where necesidadesBrutas is null;
+			update TemporalLote set disponible = 0  where necesidadesBrutas is null;
+			update TemporalLote set necesidadesNetas = 0  where necesidadesBrutas is null;
+			update TemporalLote set lanzamientoOrden = 0  where necesidadesBrutas is null;
+
 	select material as Material,
 	necesidadesBrutas as [Necesidades Brutas],
 	recepcionesProgramadas as [Recepciones Programadas],
@@ -252,6 +258,7 @@ as
 				set @aux2 = @aux2 + 1;
 			end
 --------------------------------------------------------------------------------------------------------------------
+
 			insert into  TemporalLote
 			 select *from #Temporal;
 
@@ -269,7 +276,7 @@ exec lotePorloteCompleto 1
 
 /*lote por lote solo producto principal*/
 
-create proc lotePorlote
+alter proc lotePorlote
 @idProducto int
 as
 	
@@ -362,6 +369,8 @@ as
 			update #Temporal set lanzamientoOrden = (select recepcionOrden from #Temporal t where t.id_temporal = (@cont2 + 1)) where id_temporal = @cont2;
 			SET @cont2=@cont2+1;
 		end
+
+		update #Temporal set lanzamientoOrden = 0 where lanzamientoOrden is null;
 
 		select *from #Temporal
 
@@ -676,6 +685,8 @@ as
 			set @cont = @cont + 1;
 		end---Fin del while
 
+		update #Temporal set lanzamientoOrden = 0 where lanzamientoOrden is null;
+
 		select *from #Temporal;
 		drop table #Temporal;
 	go
@@ -770,6 +781,17 @@ as
 		costoTotal float
 	)
 
+		create table #LxL
+	(
+			id int,
+			necesidadesBrutas int,
+			recepcionesProgramadas int,
+			disponible int,
+			necesidadesNetas int,
+			recepcionOrden int,
+			lanzamientoOrden int,
+	)
+
 	create table #EOQ
 	(
 			id int,
@@ -793,6 +815,9 @@ as
 
 	---Llenado de tablas
 
+	insert into #LxL(id,necesidadesBrutas , recepcionesProgramadas, disponible , necesidadesNetas ,recepcionOrden,lanzamientoOrden)
+	exec lotePorlote 1;
+
 	insert into #EOQ (id,necesidadesBrutas , recepcionesProgramadas, disponible , necesidadesNetas ,lanzamientoOrden)
 	exec MetodoEOQ 1;
 
@@ -806,6 +831,17 @@ as
 
 	set @costoM = (select p.costoMantenimiento from Producto p  where p.id_Producto = 1)
 	set @costoO = (select p.costoPedir from Producto p  where p.id_Producto = 1)
+
+	--tabla lxl
+	declare @costoMantenerlxl int;
+	declare @costoOrdenlxl int;
+	declare @costoTotallxl int;
+
+	set @costoMantenerlxl = (select SUM((e.disponible*0.5)) from #LxL e)
+	set @costoOrdenlxl =(select SUM(@costoO) from #LxL e where e.lanzamientoOrden  is not null and e.lanzamientoOrden > 0);
+	set @costoTotallxl = @costoMantenerlxl + @costoOrdenlxl;
+
+		insert into #Costo values ('Metodo LXL',@costoMantenerlxl,@costoOrdenlxl,@costoTotallxl);
 
 	---tabla eoq
 	declare @costoMantenerEOQ int;

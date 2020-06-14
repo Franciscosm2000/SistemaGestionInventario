@@ -31,6 +31,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuMRP));
             this.panelContenedorForm = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.btnCerrar = new System.Windows.Forms.Button();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -67,6 +68,7 @@
             this.panel22 = new System.Windows.Forms.Panel();
             this.panel23 = new System.Windows.Forms.Panel();
             this.panelContenedorForm.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.panelContenido.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -92,11 +94,26 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.btnCerrar);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1384, 100);
             this.panel2.TabIndex = 0;
+            // 
+            // btnCerrar
+            // 
+            this.btnCerrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnCerrar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCerrar.FlatAppearance.BorderSize = 0;
+            this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
+            this.btnCerrar.Location = new System.Drawing.Point(1345, 0);
+            this.btnCerrar.Name = "btnCerrar";
+            this.btnCerrar.Size = new System.Drawing.Size(39, 39);
+            this.btnCerrar.TabIndex = 2;
+            this.btnCerrar.UseVisualStyleBackColor = true;
+            this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
             // 
             // panelContenido
             // 
@@ -248,6 +265,7 @@
             this.btnEOQ.Size = new System.Drawing.Size(307, 124);
             this.btnEOQ.TabIndex = 10;
             this.btnEOQ.UseVisualStyleBackColor = true;
+            this.btnEOQ.Click += new System.EventHandler(this.btnEOQ_Click);
             // 
             // tableLayoutPanel3
             // 
@@ -327,6 +345,7 @@
             this.btnPOQ.Size = new System.Drawing.Size(307, 125);
             this.btnPOQ.TabIndex = 9;
             this.btnPOQ.UseVisualStyleBackColor = true;
+            this.btnPOQ.Click += new System.EventHandler(this.btnPOQ_Click);
             // 
             // panel18
             // 
@@ -406,6 +425,7 @@
             this.btnCostoMetodos.Size = new System.Drawing.Size(307, 125);
             this.btnCostoMetodos.TabIndex = 11;
             this.btnCostoMetodos.UseVisualStyleBackColor = true;
+            this.btnCostoMetodos.Click += new System.EventHandler(this.btnCostoMetodos_Click);
             // 
             // panel21
             // 
@@ -501,6 +521,7 @@
             this.Name = "MenuMRP";
             this.Text = "Form1";
             this.panelContenedorForm.ResumeLayout(false);
+            this.panel2.ResumeLayout(false);
             this.panelContenido.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -559,6 +580,7 @@
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Panel panel22;
         private System.Windows.Forms.Panel panel23;
+        private System.Windows.Forms.Button btnCerrar;
     }
 }
 

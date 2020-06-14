@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.DataVisualization.Charting;
 using SistemaInventario.Model.MRP_Pojo;
 namespace SistemaInventario.Controller.MRPController
 {
@@ -32,6 +34,20 @@ namespace SistemaInventario.Controller.MRPController
             MRPPojo m = new MRPPojo();
 
             return m.LotexLoteCompleto();
+        }
+
+        public static ArrayList Tipo()
+        {
+            MRPPojo m = new MRPPojo();
+
+            return m.MostrarTipo();
+        }
+
+        public static ArrayList MostrarDatoCosto()
+        {
+            MRPPojo m = new MRPPojo();
+
+            return m.MostrarDatoCosto();
         }
 
 

@@ -21,7 +21,7 @@ namespace SistemaInventario
 
         public void AbrirFormEnPanel(object formHijo)
         {
-            LotexLote l = new LotexLote();
+            Form l = formHijo as Form;
             l.FormBorderStyle = FormBorderStyle.None;
             l.TopLevel = false;
             l.Dock = DockStyle.Fill;
@@ -48,11 +48,30 @@ namespace SistemaInventario
             AbrirFormEnPanel(f);
         }
 
-        private void btnLxL_Click_1(object sender, EventArgs e)
+        private void btnCerrar_Click(object sender, EventArgs e)
         {
-            LotexLote f = new LotexLote();
-            f.FormClosed += new FormClosedEventHandler(MostrarFormMRPoAlCerrarForms);
-            AbrirFormEnPanel(f);
+            this.Close();
+        }
+
+        private void btnEOQ_Click(object sender, EventArgs e)
+        {
+            EOQ eOQ = new EOQ();
+            eOQ.FormClosed += new FormClosedEventHandler(MostrarFormMRPoAlCerrarForms);
+            AbrirFormEnPanel(eOQ);
+        }
+
+        private void btnPOQ_Click(object sender, EventArgs e)
+        {
+            POQ eOQ = new POQ();
+            eOQ.FormClosed += new FormClosedEventHandler(MostrarFormMRPoAlCerrarForms);
+            AbrirFormEnPanel(eOQ);
+        }
+
+        private void btnCostoMetodos_Click(object sender, EventArgs e)
+        {
+            Costos eOQ = new Costos();
+            eOQ.FormClosed += new FormClosedEventHandler(MostrarFormMRPoAlCerrarForms);
+            AbrirFormEnPanel(eOQ);
         }
     }
 }
