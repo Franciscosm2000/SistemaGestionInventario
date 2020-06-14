@@ -21,16 +21,14 @@ namespace SistemaInventario
 
         public void AbrirFormEnPanel(object formHijo)
         {
-
-            if (MenuPrincipal.PanelMenuPrincipal.Controls.Count > 0)
-                MenuPrincipal.PanelMenuPrincipal.Controls.RemoveAt(0);
-            Form fh = formHijo as Form;
-            fh.TopLevel = false;
-            fh.FormBorderStyle = FormBorderStyle.None;
-            fh.Dock = DockStyle.Fill;
-            MenuPrincipal.PanelMenuPrincipal.Controls.Add(fh);
-            MenuPrincipal.PanelMenuPrincipal.Tag = fh;
-            fh.Show();
+            LotexLote l = new LotexLote();
+            l.FormBorderStyle = FormBorderStyle.None;
+            l.TopLevel = false;
+            l.Dock = DockStyle.Fill;
+            this.Controls.Add(l);
+            this.Tag = l;
+            l.BringToFront();
+            l.Show();
         }
 
         private void MostrarFormMRPoAlCerrarForms(object sender, FormClosedEventArgs e)

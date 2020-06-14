@@ -150,14 +150,14 @@ namespace SistemaInventario.View.Principal
         //METODO PARA ABRIR FORM DENTRO DE PANEL-----------------------------------------------------
         private void AbrirFormEnPanel(object formHijo)
         {
-            if (MenuPrincipal.PanelMenuPrincipal.Controls.Count > 0)
-                MenuPrincipal.PanelMenuPrincipal.Controls.RemoveAt(0);
+            if (PanelMenuPrincipal.Controls.Count > 0)
+                PanelMenuPrincipal.Controls.RemoveAt(0);
             Form fh = formHijo as Form;
             fh.TopLevel = false;
             fh.FormBorderStyle = FormBorderStyle.None;
             fh.Dock = DockStyle.Fill;
-            MenuPrincipal.PanelMenuPrincipal.Controls.Add(fh);
-            MenuPrincipal.PanelMenuPrincipal.Tag = fh;
+            PanelMenuPrincipal.Controls.Add(fh);
+            PanelMenuPrincipal.Tag = fh;
             fh.Show();
         }
         //METODO PARA MOSTRAR FORMULARIO DE LOGO Al INICIAR ----------------------------------------------------------

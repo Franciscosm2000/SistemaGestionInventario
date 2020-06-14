@@ -1,4 +1,6 @@
-﻿namespace SistemaInventario.View.Principal
+﻿using System.Drawing;
+
+namespace SistemaInventario.View.Principal
 {
     partial class MenuPrincipal
     {
@@ -47,7 +49,7 @@
             this.btnCerrar = new System.Windows.Forms.Button();
             this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
             this.MenuEfect = new BunifuAnimatorNS.BunifuTransition(this.components);
-            MenuPrincipal.PanelMenuPrincipal = new System.Windows.Forms.Panel();
+            this.PanelMenuPrincipal = new System.Windows.Forms.Panel();
             this.PanelContenedorPrincipal.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -57,7 +59,7 @@
             // 
             // PanelContenedorPrincipal
             // 
-            this.PanelContenedorPrincipal.Controls.Add(MenuPrincipal.PanelMenuPrincipal);
+            this.PanelContenedorPrincipal.Controls.Add(this.PanelMenuPrincipal);
             this.PanelContenedorPrincipal.Controls.Add(this.panel2);
             this.PanelContenedorPrincipal.Controls.Add(this.panelMenu);
             this.PanelContenedorPrincipal.Controls.Add(this.PanelBarraTitulo);
@@ -70,7 +72,7 @@
             // 
             // panel2
             // 
-            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(242)))), ((int)(((byte)(242)))), ((int)(((byte)(242)))));
+            this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Controls.Add(this.lbFecha);
             this.panel2.Controls.Add(this.lblHora);
             this.MenuEfect.SetDecoration(this.panel2, BunifuAnimatorNS.DecorationType.None);
@@ -306,17 +308,18 @@
             // 
             // PanelMenuPrincipal
             // 
-            this.MenuEfect.SetDecoration(MenuPrincipal.PanelMenuPrincipal, BunifuAnimatorNS.DecorationType.None);
-            MenuPrincipal.PanelMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            MenuPrincipal.PanelMenuPrincipal.Location = new System.Drawing.Point(78, 43);
-            MenuPrincipal.PanelMenuPrincipal.Name = "PanelMenuPrincipal";
-            MenuPrincipal.PanelMenuPrincipal.Size = new System.Drawing.Size(1122, 657);
-            MenuPrincipal.PanelMenuPrincipal.TabIndex = 9;
+            this.MenuEfect.SetDecoration(this.PanelMenuPrincipal, BunifuAnimatorNS.DecorationType.None);
+            this.PanelMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelMenuPrincipal.Location = new System.Drawing.Point(78, 43);
+            this.PanelMenuPrincipal.Name = "PanelMenuPrincipal";
+            this.PanelMenuPrincipal.Size = new System.Drawing.Size(1122, 657);
+            this.PanelMenuPrincipal.TabIndex = 9;
             // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Controls.Add(this.PanelContenedorPrincipal);
             this.MenuEfect.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
@@ -353,6 +356,6 @@
         private System.Windows.Forms.Label lblHora;
         private BunifuAnimatorNS.BunifuTransition MenuEfect;
         private System.Windows.Forms.Timer tmFechaHora;
-        public static System.Windows.Forms.Panel PanelMenuPrincipal;
+        private System.Windows.Forms.Panel PanelMenuPrincipal;
     }
 }
