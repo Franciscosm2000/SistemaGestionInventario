@@ -849,7 +849,7 @@ as
 	declare @costoTotalEOQ int;
 
 	set @costoMantenerEOQ = (select SUM((e.disponible*0.5)) from #EOQ e)
-	set @costoOrdenEOQ =(select SUM(@costoO) from #EOQ e where e.lanzamientoOrden  is not null or e.lanzamientoOrden > 0);
+	set @costoOrdenEOQ =(select SUM(@costoO) from #EOQ e where e.lanzamientoOrden  is not null and e.lanzamientoOrden > 0);
 	set @costoTotalEOQ = @costoMantenerEOQ + @costoOrdenEOQ;
 
 		insert into #Costo values ('Metodo EOQ',@costoMantenerEOQ,@costoOrdenEOQ,@costoTotalEOQ);
@@ -860,7 +860,7 @@ as
 	declare @costoTotalPOQ int;
 
 	set @costoMantenerPOQ = (select SUM(e.disponible * 0.5) from #POQ e)
-	set @costoOrdenPOQ = (select SUM(@costoO) from #POQ e where e.lanzamientoOrden is not null or e.lanzamientoOrden > 0);
+	set @costoOrdenPOQ = (select SUM(@costoO) from #POQ e where e.lanzamientoOrden is not null and e.lanzamientoOrden > 0);
 	set @costoTotalPOQ = @costoMantenerPOQ + @costoOrdenPOQ;
 
 		insert into #Costo values ('Metodo POQ',@costoMantenerPOQ,@costoOrdenPOQ,@costoTotalPOQ);
