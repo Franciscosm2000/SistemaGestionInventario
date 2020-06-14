@@ -1,0 +1,9 @@
+C:\Users\HP\source\repos\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.csprojAssemblyReference.cache
+C:\Users\HP\source\repos\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.Properties.Resources.resources
+C:\Users\HP\source\repos\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.csproj.GenerateResource.cache
+C:\Users\HP\source\repos\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.csproj.CoreCompileInputs.cache
+C:\Users\HP\source\repos\SistemaInventario\SistemaInventario\bin\Debug\SistemaInventario.exe.config
+C:\Users\HP\source\repos\SistemaInventario\SistemaInventario\bin\Debug\SistemaInventario.exe
+C:\Users\HP\source\repos\SistemaInventario\SistemaInventario\bin\Debug\SistemaInventario.pdb
+C:\Users\HP\source\repos\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.exe
+C:\Users\HP\source\repos\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.pdb
