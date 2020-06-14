@@ -2,7 +2,6 @@ C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInven
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\bin\Debug\SistemaInventario.exe
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\bin\Debug\SistemaInventario.pdb
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaGI.csprojAssemblyReference.cache
-C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.FormMenuPrincipal.resources
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.Properties.Resources.resources
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.VentanaLogo.resources
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaGI.csproj.GenerateResource.cache
@@ -13,4 +12,4 @@ C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInven
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaGI.csproj.ResolveComReference.cache
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.MenuMRP.resources
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.View.ViewMRP.LotexLote.resources
-C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.View.Principal.MenuNuevo.resources
+C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.View.Principal.MenuPrincipal.resources

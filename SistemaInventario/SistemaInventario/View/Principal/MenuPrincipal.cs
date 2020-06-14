@@ -12,18 +12,18 @@ using System.Windows.Forms;
 using SistemaInventario.Controller.MRPController;
 using SistemaInventario.View.ViewMRP;
 
-namespace SistemaInventario
+namespace SistemaInventario.View.Principal
 {
-    public partial class FormMenuPrincipal : Form
+    public partial class MenuPrincipal : Form
     {
-        //Constructor
-        public FormMenuPrincipal()
+        public MenuPrincipal()
         {
             InitializeComponent();
             //Estas lineas eliminan los parpadeos del formulario o controles en la interfaz grafica (Pero no en un 100%)
             this.SetStyle(ControlStyles.ResizeRedraw, true);
             this.DoubleBuffered = true;
         }
+
         //METODO PARA REDIMENCIONAR/CAMBIAR TAMAÑO A FORMULARIO  TIEMPO DE EJECUCION ----------------------------------------------------------
         private int tolerance = 15;
         private const int WM_NCHITTEST = 132;
@@ -54,7 +54,7 @@ namespace SistemaInventario
             sizeGripRectangle = new Rectangle(this.ClientRectangle.Width - tolerance, this.ClientRectangle.Height - tolerance, tolerance, tolerance);
 
             region.Exclude(sizeGripRectangle);
-            this.panelContenedorPrincipal.Region = region;
+            PanelContenedorPrincipal.Region = region;
             this.Invalidate();
         }
         //----------------COLOR Y GRIP DE RECTANGULO INFERIOR
@@ -67,7 +67,7 @@ namespace SistemaInventario
             base.OnPaint(e);
             ControlPaint.DrawSizeGrip(e.Graphics, Color.Transparent, sizeGripRectangle);
         }
-       
+
         //METODO PARA ARRASTRAR EL FORMULARIO---------------------------------------------------------------------
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -126,7 +126,7 @@ namespace SistemaInventario
         //METODOS PARA ANIMACION DE MENU SLIDING--
         private void btnMenu_Click(object sender, EventArgs e)
         {
- 
+
 
             if (panelMenu.Width == 78)
             {
@@ -143,21 +143,21 @@ namespace SistemaInventario
                 MenuEfect.ShowSync(panelMenu);
 
             }
- 
+
         }
- 
+
 
         //METODO PARA ABRIR FORM DENTRO DE PANEL-----------------------------------------------------
         private void AbrirFormEnPanel(object formHijo)
         {
-            if (FormMenuPrincipal.panelContenedorForm.Controls.Count > 0)
-                FormMenuPrincipal.panelContenedorForm.Controls.RemoveAt(0);
+            if (MenuPrincipal.PanelMenuPrincipal.Controls.Count > 0)
+                MenuPrincipal.PanelMenuPrincipal.Controls.RemoveAt(0);
             Form fh = formHijo as Form;
             fh.TopLevel = false;
             fh.FormBorderStyle = FormBorderStyle.None;
             fh.Dock = DockStyle.Fill;
-            FormMenuPrincipal.panelContenedorForm.Controls.Add(fh);
-            FormMenuPrincipal.panelContenedorForm.Tag = fh;
+            MenuPrincipal.PanelMenuPrincipal.Controls.Add(fh);
+            MenuPrincipal.PanelMenuPrincipal.Tag = fh;
             fh.Show();
         }
         //METODO PARA MOSTRAR FORMULARIO DE LOGO Al INICIAR ----------------------------------------------------------
@@ -213,14 +213,12 @@ namespace SistemaInventario
             lbFecha.Text = DateTime.Now.ToLongDateString();
             lblHora.Text = DateTime.Now.ToString("HH:mm:ssss");
         }
-        
+
 
         private void button5_Click(object sender, EventArgs e)
         {
-             AbrirFormEnPanel(new VentanaLogo());
+            AbrirFormEnPanel(new VentanaLogo());
         }
-
-        
 
     }
 }

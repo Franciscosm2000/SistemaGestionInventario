@@ -22,14 +22,14 @@ namespace SistemaInventario
         public void AbrirFormEnPanel(object formHijo)
         {
 
-            if (MenuNuevo.PanelMenuPrincipal.Controls.Count > 0)
-                MenuNuevo.PanelMenuPrincipal.Controls.RemoveAt(0);
+            if (MenuPrincipal.PanelMenuPrincipal.Controls.Count > 0)
+                MenuPrincipal.PanelMenuPrincipal.Controls.RemoveAt(0);
             Form fh = formHijo as Form;
             fh.TopLevel = false;
             fh.FormBorderStyle = FormBorderStyle.None;
             fh.Dock = DockStyle.Fill;
-            MenuNuevo.PanelMenuPrincipal.Controls.Add(fh);
-            MenuNuevo.PanelMenuPrincipal.Tag = fh;
+            MenuPrincipal.PanelMenuPrincipal.Controls.Add(fh);
+            MenuPrincipal.PanelMenuPrincipal.Tag = fh;
             fh.Show();
         }
 
