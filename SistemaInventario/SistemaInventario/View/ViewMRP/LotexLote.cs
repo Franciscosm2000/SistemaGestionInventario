@@ -24,5 +24,6 @@ namespace SistemaInventario.View.ViewMRP
         {
             this.Close();
         }
+        
     }
 }

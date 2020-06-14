@@ -13,3 +13,4 @@ C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInven
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaGI.csproj.ResolveComReference.cache
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.MenuMRP.resources
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.View.ViewMRP.LotexLote.resources
+C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.View.Principal.MenuNuevo.resources

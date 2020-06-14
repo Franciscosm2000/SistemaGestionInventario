@@ -1,4 +1,5 @@
-﻿using SistemaInventario.View.ViewMRP;
+﻿using SistemaInventario.View.Principal;
+using SistemaInventario.View.ViewMRP;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -21,14 +22,14 @@ namespace SistemaInventario
         public void AbrirFormEnPanel(object formHijo)
         {
 
-            if (FormMenuPrincipal.panelContenedorForm.Controls.Count > 0)
-                FormMenuPrincipal.panelContenedorForm.Controls.RemoveAt(0);
+            if (MenuNuevo.PanelMenuPrincipal.Controls.Count > 0)
+                MenuNuevo.PanelMenuPrincipal.Controls.RemoveAt(0);
             Form fh = formHijo as Form;
             fh.TopLevel = false;
             fh.FormBorderStyle = FormBorderStyle.None;
             fh.Dock = DockStyle.Fill;
-            FormMenuPrincipal.panelContenedorForm.Controls.Add(fh);
-            FormMenuPrincipal.panelContenedorForm.Tag = fh;
+            MenuNuevo.PanelMenuPrincipal.Controls.Add(fh);
+            MenuNuevo.PanelMenuPrincipal.Tag = fh;
             fh.Show();
         }
 
