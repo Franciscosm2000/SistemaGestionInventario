@@ -24,5 +24,15 @@ namespace SistemaInventario.View.ViewMRP
         {
             this.Close();
         }
+
+        private void cambioLetra(object sender, EventArgs e)
+        {
+            this.exportar.ForeColor = Color.White;
+        }
+
+        private void normalLetra(object sender, EventArgs e)
+        {
+            this.exportar.ForeColor = Color.Black;
+        }
     }
 }
