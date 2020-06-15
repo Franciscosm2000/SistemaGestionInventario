@@ -31,7 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuMRP));
             this.panelContenedorForm = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.panel25 = new System.Windows.Forms.Panel();
+            this.bunifuSeparator1 = new Bunifu.Framework.UI.BunifuSeparator();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel24 = new System.Windows.Forms.Panel();
             this.btnCerrar = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.panelContenido = new System.Windows.Forms.Panel();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel5 = new System.Windows.Forms.Panel();
@@ -65,10 +70,13 @@
             this.panel19 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.panel22 = new System.Windows.Forms.Panel();
+            this.header = new System.Windows.Forms.Panel();
             this.panel23 = new System.Windows.Forms.Panel();
             this.panelContenedorForm.SuspendLayout();
             this.panel2.SuspendLayout();
+            this.panel25.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel24.SuspendLayout();
             this.panelContenido.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel5.SuspendLayout();
@@ -94,12 +102,58 @@
             // 
             // panel2
             // 
-            this.panel2.Controls.Add(this.btnCerrar);
+            this.panel2.Controls.Add(this.panel25);
+            this.panel2.Controls.Add(this.panel24);
+            this.panel2.Controls.Add(this.panel1);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1384, 100);
             this.panel2.TabIndex = 0;
+            // 
+            // panel25
+            // 
+            this.panel25.Controls.Add(this.bunifuSeparator1);
+            this.panel25.Controls.Add(this.pictureBox1);
+            this.panel25.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel25.Location = new System.Drawing.Point(200, 0);
+            this.panel25.Name = "panel25";
+            this.panel25.Size = new System.Drawing.Size(984, 100);
+            this.panel25.TabIndex = 2;
+            // 
+            // bunifuSeparator1
+            // 
+            this.bunifuSeparator1.BackColor = System.Drawing.Color.Transparent;
+            this.bunifuSeparator1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.bunifuSeparator1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bunifuSeparator1.LineColor = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(36)))), ((int)(((byte)(71)))));
+            this.bunifuSeparator1.LineThickness = 2;
+            this.bunifuSeparator1.Location = new System.Drawing.Point(0, 90);
+            this.bunifuSeparator1.Name = "bunifuSeparator1";
+            this.bunifuSeparator1.Size = new System.Drawing.Size(984, 10);
+            this.bunifuSeparator1.TabIndex = 2;
+            this.bunifuSeparator1.Transparency = 255;
+            this.bunifuSeparator1.Vertical = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(326, -65);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(342, 247);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 1;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel24
+            // 
+            this.panel24.Controls.Add(this.btnCerrar);
+            this.panel24.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel24.Location = new System.Drawing.Point(1184, 0);
+            this.panel24.Name = "panel24";
+            this.panel24.Size = new System.Drawing.Size(200, 100);
+            this.panel24.TabIndex = 1;
             // 
             // btnCerrar
             // 
@@ -108,12 +162,20 @@
             this.btnCerrar.FlatAppearance.BorderSize = 0;
             this.btnCerrar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
-            this.btnCerrar.Location = new System.Drawing.Point(1345, 0);
+            this.btnCerrar.Location = new System.Drawing.Point(161, 0);
             this.btnCerrar.Name = "btnCerrar";
             this.btnCerrar.Size = new System.Drawing.Size(39, 39);
             this.btnCerrar.TabIndex = 2;
             this.btnCerrar.UseVisualStyleBackColor = true;
             this.btnCerrar.Click += new System.EventHandler(this.btnCerrar_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(200, 100);
+            this.panel1.TabIndex = 0;
             // 
             // panelContenido
             // 
@@ -121,7 +183,7 @@
             this.panelContenido.Controls.Add(this.tableLayoutPanel1);
             this.panelContenido.Controls.Add(this.panel4);
             this.panelContenido.Controls.Add(this.panel3);
-            this.panelContenido.Controls.Add(this.panel22);
+            this.panelContenido.Controls.Add(this.header);
             this.panelContenido.Controls.Add(this.panel23);
             this.panelContenido.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContenido.Location = new System.Drawing.Point(0, 0);
@@ -495,13 +557,13 @@
             this.panel3.Size = new System.Drawing.Size(200, 547);
             this.panel3.TabIndex = 2;
             // 
-            // panel22
+            // header
             // 
-            this.panel22.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel22.Location = new System.Drawing.Point(200, 0);
-            this.panel22.Name = "panel22";
-            this.panel22.Size = new System.Drawing.Size(1184, 100);
-            this.panel22.TabIndex = 1;
+            this.header.Dock = System.Windows.Forms.DockStyle.Top;
+            this.header.Location = new System.Drawing.Point(200, 0);
+            this.header.Name = "header";
+            this.header.Size = new System.Drawing.Size(1184, 100);
+            this.header.TabIndex = 1;
             // 
             // panel23
             // 
@@ -522,6 +584,9 @@
             this.Text = "Form1";
             this.panelContenedorForm.ResumeLayout(false);
             this.panel2.ResumeLayout(false);
+            this.panel25.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel24.ResumeLayout(false);
             this.panelContenido.ResumeLayout(false);
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
@@ -578,9 +643,14 @@
         private System.Windows.Forms.Panel panel19;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel22;
+        private System.Windows.Forms.Panel header;
         private System.Windows.Forms.Panel panel23;
         private System.Windows.Forms.Button btnCerrar;
+        private System.Windows.Forms.Panel panel24;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel25;
+        private Bunifu.Framework.UI.BunifuSeparator bunifuSeparator1;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }
 

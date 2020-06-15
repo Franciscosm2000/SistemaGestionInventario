@@ -17,13 +17,13 @@ namespace SistemaInventario.View.ViewMRP
         {
             InitializeComponent();
             dgvLxL.DataSource = null;
-           dgvLxL.DataSource = MRPcontrol.MostrarDato("LXL");
+            dgvLxL.DataSource = MRPcontrol.MostrarDato("LXL");
         }
 
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        
+ 
     }
 }

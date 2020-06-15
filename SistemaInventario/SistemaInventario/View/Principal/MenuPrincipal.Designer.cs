@@ -34,6 +34,7 @@ namespace SistemaInventario.View.Principal
             BunifuAnimatorNS.Animation animation1 = new BunifuAnimatorNS.Animation();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MenuPrincipal));
             this.PanelContenedorPrincipal = new System.Windows.Forms.Panel();
+            this.PanelMenuPrincipal = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.lbFecha = new System.Windows.Forms.Label();
             this.lblHora = new System.Windows.Forms.Label();
@@ -49,7 +50,6 @@ namespace SistemaInventario.View.Principal
             this.btnCerrar = new System.Windows.Forms.Button();
             this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
             this.MenuEfect = new BunifuAnimatorNS.BunifuTransition(this.components);
-            this.PanelMenuPrincipal = new System.Windows.Forms.Panel();
             this.PanelContenedorPrincipal.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -69,6 +69,15 @@ namespace SistemaInventario.View.Principal
             this.PanelContenedorPrincipal.Name = "PanelContenedorPrincipal";
             this.PanelContenedorPrincipal.Size = new System.Drawing.Size(1200, 800);
             this.PanelContenedorPrincipal.TabIndex = 0;
+            // 
+            // PanelMenuPrincipal
+            // 
+            this.MenuEfect.SetDecoration(this.PanelMenuPrincipal, BunifuAnimatorNS.DecorationType.None);
+            this.PanelMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.PanelMenuPrincipal.Location = new System.Drawing.Point(78, 43);
+            this.PanelMenuPrincipal.Name = "PanelMenuPrincipal";
+            this.PanelMenuPrincipal.Size = new System.Drawing.Size(1122, 657);
+            this.PanelMenuPrincipal.TabIndex = 9;
             // 
             // panel2
             // 
@@ -306,15 +315,6 @@ namespace SistemaInventario.View.Principal
             animation1.TransparencyCoeff = 0F;
             this.MenuEfect.DefaultAnimation = animation1;
             // 
-            // PanelMenuPrincipal
-            // 
-            this.MenuEfect.SetDecoration(this.PanelMenuPrincipal, BunifuAnimatorNS.DecorationType.None);
-            this.PanelMenuPrincipal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.PanelMenuPrincipal.Location = new System.Drawing.Point(78, 43);
-            this.PanelMenuPrincipal.Name = "PanelMenuPrincipal";
-            this.PanelMenuPrincipal.Size = new System.Drawing.Size(1122, 657);
-            this.PanelMenuPrincipal.TabIndex = 9;
-            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -324,6 +324,7 @@ namespace SistemaInventario.View.Principal
             this.Controls.Add(this.PanelContenedorPrincipal);
             this.MenuEfect.SetDecoration(this, BunifuAnimatorNS.DecorationType.None);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(1200, 800);
             this.Name = "MenuPrincipal";
             this.Text = "MenuNuevo";
