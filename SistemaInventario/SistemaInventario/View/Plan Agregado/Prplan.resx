@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label22.Text" xml:space="preserve">
+    <value>Este método se considera una fuerza de trabajo mínima según el mes de menor demanda, de tal manera que los trabajadores a tener solo podrán responder con la producción de ese mes. La demanda restante será atendida por medio de subcontratación.</value>
+  </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="pictureBox4.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -5031,8 +5034,8 @@
         qM0EAAAAAAAAAAAAAIDaTAAAAAAAAAAAAAAAaN375P75/I5uK38AAAAASUVORK5CYII=
 </value>
   </data>
-  <data name="label22.Text" xml:space="preserve">
-    <value>Este método se considera una fuerza de trabajo mínima según el mes de menor demanda, de tal manera que los trabajadores a tener solo podrán responder con la producción de ese mes. La demanda restante será atendida por medio de subcontratación.</value>
+  <data name="label18.Text" xml:space="preserve">
+    <value>Estrategia de nivelación en la que se coloca el mismo número de trabajadores para los periodos en que se planea la producción. Los costos aquí no se generan por contrataciones y despidos, se genera por los costos de almacenamiento y faltantes.</value>
   </data>
   <data name="pictureBox3.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -9946,9 +9949,6 @@
         AAAAAAAAqM0EAAAAAAAAAAAAAIDaTAAAAAAAAAAAAAAAqM0EAAAAAAAAAAAAAIDaTAAAAAAAAAAAAAAA
         qM0EAAAAAAAAAAAAAIDaTAAAAAAAAAAAAAAAaN375P75/I5uK38AAAAASUVORK5CYII=
 </value>
-  </data>
-  <data name="label18.Text" xml:space="preserve">
-    <value>Estrategia de nivelación en la que se coloca el mismo número de trabajadores para los periodos en que se planea la producción. Los costos aquí no se generan por contrataciones y despidos, se genera por los costos de almacenamiento y faltantes.</value>
   </data>
   <data name="label14.Text" xml:space="preserve">
     <value>Este método se basa en una estrategia de ajuste o persecución de la demanda, en la que por medio de contrataciones y despidos del personal, buscamos producir exactamente lo que se requiere, razón por la cual no hay costos asociados a inventarios y faltantes.</value>
