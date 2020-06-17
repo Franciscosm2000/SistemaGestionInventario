@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaInventario.Controller.MRPController;
 using SistemaInventario.Plan_Agregado;
+using SistemaInventario.View.Principal.Configuracines;
 using SistemaInventario.View.ViewMRP;
 using SistemaInventario.View.ViewPQ;
 
@@ -224,7 +225,7 @@ namespace SistemaInventario.View.Principal
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Configuraciones f = new Configuraciones();
+            General f = new General();
             f.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             AbrirFormEnPanel(f);
         }

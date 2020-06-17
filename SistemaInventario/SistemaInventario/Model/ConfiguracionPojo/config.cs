@@ -35,12 +35,29 @@ namespace SistemaInventario.Model.ConfiguracionPojo
                                 proceso = "Registro_inventario";
                                 break;
 
-                        }
-                        comando.CommandText = proceso;
-                        comando.CommandType = CommandType.StoredProcedure;
+                            case "DC":
+                                proceso = "mostrarDatosAlexander";
+                                break;
 
-                        SqlDataAdapter adp = new SqlDataAdapter(comando);
-                        adp.Fill(res);
+                        }
+
+                        if (proceso.Equals("mostrarDatosAlexander"))
+                        {
+                            comando.CommandText = proceso;
+                            comando.CommandType = CommandType.StoredProcedure;
+
+                            SqlDataAdapter adp = new SqlDataAdapter(comando);
+                            adp.Fill(res);
+                        }
+                        else
+                        {
+                            comando.CommandText = proceso;
+                            comando.CommandType = CommandType.StoredProcedure;
+
+                            SqlDataAdapter adp = new SqlDataAdapter(comando);
+                            adp.Fill(res);
+                        }
+
                         comando.Parameters.Clear();
 
                     }//fin segundo using
@@ -50,5 +67,6 @@ namespace SistemaInventario.Model.ConfiguracionPojo
 
             return res;
         }
+
     }
 }

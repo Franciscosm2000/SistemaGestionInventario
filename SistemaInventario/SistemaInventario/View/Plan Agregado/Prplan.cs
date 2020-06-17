@@ -30,21 +30,21 @@ namespace SistemaInventario.Plan_Agregado
                 adaptador.SelectCommand = comando;
                 DataTable tabla = new DataTable();
                 adaptador.Fill(tabla);
-                dataGridView1.DataSource = GenerateTransposedTable(tabla);
+                dataGridView1.DataSource = Prplan.GenerateTransposedTable(tabla);
                 dataGridView1.Columns[0].Width = 200 ;
 
                 SqlCommand comando2 = new SqlCommand("exec InventarioAjustado", conec);
                 adaptador.SelectCommand = comando2;
                 DataTable tabla2 = new DataTable();
                 adaptador.Fill(tabla2);
-                dataGridView2.DataSource = GenerateTransposedTable(tabla2);
+                dataGridView2.DataSource = Prplan.GenerateTransposedTable(tabla2);
                 dataGridView2.Columns[0].Width = 200;
 
                 SqlCommand comando3 = new SqlCommand("exec FuerzaNivelada", conec);
                 adaptador.SelectCommand = comando3;
                 DataTable tabla3 = new DataTable();
                 adaptador.Fill(tabla3);
-                dataGridView3.DataSource = GenerateTransposedTable(tabla3);
+                dataGridView3.DataSource = Prplan.GenerateTransposedTable(tabla3);
                 dataGridView3.Columns[0].Width = 200;
 
                 SqlCommand cmo = new SqlCommand("select * from totales", conec);
@@ -67,7 +67,7 @@ namespace SistemaInventario.Plan_Agregado
             }
 
         }
-        private DataTable GenerateTransposedTable(DataTable inputTable)
+        public static DataTable GenerateTransposedTable(DataTable inputTable)
         {
             DataTable outputTable = new DataTable();
 
