@@ -167,6 +167,7 @@ namespace SistemaInventario.View.Principal
             this.btnPQ.Text = "   Mètodo PQ";
             this.btnPQ.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPQ.UseVisualStyleBackColor = true;
+            this.btnPQ.Click += new System.EventHandler(this.btnPQ_Click);
             // 
             // btnPlanAgregado
             // 

@@ -11,6 +11,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaInventario.Controller.MRPController;
 using SistemaInventario.View.ViewMRP;
+using SistemaInventario.View.ViewPQ;
 
 namespace SistemaInventario.View.Principal
 {
@@ -202,6 +203,13 @@ namespace SistemaInventario.View.Principal
         private void btnPlanAgregado_Click(object sender, EventArgs e)
         {
             LotexLote f = new LotexLote();
+            f.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            AbrirFormEnPanel(f);
+        }
+
+        private void btnPQ_Click(object sender, EventArgs e)
+        {
+            ModeloPQ f = new ModeloPQ();
             f.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             AbrirFormEnPanel(f);
         }
