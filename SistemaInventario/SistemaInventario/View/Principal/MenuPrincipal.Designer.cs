@@ -189,6 +189,7 @@ namespace SistemaInventario.View.Principal
             this.btnPlanAgregado.Text = "   Plan Agregado";
             this.btnPlanAgregado.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnPlanAgregado.UseVisualStyleBackColor = true;
+            this.btnPlanAgregado.Click += new System.EventHandler(this.btnPlanAgregado_Click_1);
             // 
             // btnMRP
             // 

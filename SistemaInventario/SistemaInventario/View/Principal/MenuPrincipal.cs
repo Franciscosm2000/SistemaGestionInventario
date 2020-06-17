@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using SistemaInventario.Controller.MRPController;
+using SistemaInventario.Plan_Agregado;
 using SistemaInventario.View.ViewMRP;
 using SistemaInventario.View.ViewPQ;
 
@@ -210,6 +211,13 @@ namespace SistemaInventario.View.Principal
         private void btnPQ_Click(object sender, EventArgs e)
         {
             ModeloPQ f = new ModeloPQ();
+            f.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            AbrirFormEnPanel(f);
+        }
+
+        private void btnPlanAgregado_Click_1(object sender, EventArgs e)
+        {
+            Prplan f = new Prplan();
             f.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
             AbrirFormEnPanel(f);
         }

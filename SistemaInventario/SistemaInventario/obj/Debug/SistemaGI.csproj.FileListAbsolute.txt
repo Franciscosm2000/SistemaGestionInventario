@@ -17,3 +17,4 @@ C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInven
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.View.ViewMRP.POQ.resources
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.View.ViewMRP.Costos.resources
 C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.View.ViewPQ.ModeloPQ.resources
+C:\Users\franc\Documents\SistemaGestionInventario\SistemaInventario\SistemaInventario\obj\Debug\SistemaInventario.Plan_Agregado.Prplan.resources
