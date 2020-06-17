@@ -176,12 +176,6 @@ namespace SistemaInventario.Model.PQ_Pojo
         }
 
 
-        String conexionstring = @"server= DESKTOP-3FB1R0I\SQLEXPRESS; Database = sistemaInventario ; User Id =sa; Password = 1320022077";
-        SqlDataAdapter DA;
-        DataTable DT;
-        DataRow DR;
-        String Consulta;
-
 
  
 

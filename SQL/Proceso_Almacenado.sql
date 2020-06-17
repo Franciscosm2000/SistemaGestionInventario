@@ -8,6 +8,8 @@ from Producto p inner join Programa_Maestro pm
 on (p.id_Producto = pm.id_Producto);
 go
 
+select *from Producto
+
 exec ProgramaMaestro
 
 /*Registro Inventario*/

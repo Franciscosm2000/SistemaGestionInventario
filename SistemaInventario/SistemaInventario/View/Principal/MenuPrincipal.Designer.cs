@@ -50,6 +50,7 @@ namespace SistemaInventario.View.Principal
             this.btnCerrar = new System.Windows.Forms.Button();
             this.tmFechaHora = new System.Windows.Forms.Timer(this.components);
             this.MenuEfect = new BunifuAnimatorNS.BunifuTransition(this.components);
+            this.button1 = new System.Windows.Forms.Button();
             this.PanelContenedorPrincipal.SuspendLayout();
             this.panel2.SuspendLayout();
             this.panelMenu.SuspendLayout();
@@ -120,6 +121,7 @@ namespace SistemaInventario.View.Principal
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(27)))), ((int)(((byte)(27)))), ((int)(((byte)(47)))));
+            this.panelMenu.Controls.Add(this.button1);
             this.panelMenu.Controls.Add(this.btnMenu);
             this.panelMenu.Controls.Add(this.btnPQ);
             this.panelMenu.Controls.Add(this.btnPlanAgregado);
@@ -159,7 +161,7 @@ namespace SistemaInventario.View.Principal
             this.btnPQ.ForeColor = System.Drawing.Color.Silver;
             this.btnPQ.Image = ((System.Drawing.Image)(resources.GetObject("btnPQ.Image")));
             this.btnPQ.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPQ.Location = new System.Drawing.Point(3, 550);
+            this.btnPQ.Location = new System.Drawing.Point(0, 421);
             this.btnPQ.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
             this.btnPQ.Name = "btnPQ";
             this.btnPQ.Size = new System.Drawing.Size(230, 80);
@@ -181,7 +183,7 @@ namespace SistemaInventario.View.Principal
             this.btnPlanAgregado.ForeColor = System.Drawing.Color.Silver;
             this.btnPlanAgregado.Image = ((System.Drawing.Image)(resources.GetObject("btnPlanAgregado.Image")));
             this.btnPlanAgregado.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnPlanAgregado.Location = new System.Drawing.Point(0, 350);
+            this.btnPlanAgregado.Location = new System.Drawing.Point(0, 243);
             this.btnPlanAgregado.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
             this.btnPlanAgregado.Name = "btnPlanAgregado";
             this.btnPlanAgregado.Size = new System.Drawing.Size(230, 80);
@@ -203,7 +205,7 @@ namespace SistemaInventario.View.Principal
             this.btnMRP.ForeColor = System.Drawing.Color.Silver;
             this.btnMRP.Image = ((System.Drawing.Image)(resources.GetObject("btnMRP.Image")));
             this.btnMRP.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMRP.Location = new System.Drawing.Point(0, 180);
+            this.btnMRP.Location = new System.Drawing.Point(0, 84);
             this.btnMRP.Margin = new System.Windows.Forms.Padding(0);
             this.btnMRP.Name = "btnMRP";
             this.btnMRP.Size = new System.Drawing.Size(230, 80);
@@ -317,6 +319,28 @@ namespace SistemaInventario.View.Principal
             animation1.TransparencyCoeff = 0F;
             this.MenuEfect.DefaultAnimation = animation1;
             // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.MenuEfect.SetDecoration(this.button1, BunifuAnimatorNS.DecorationType.None);
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(69)))), ((int)(((byte)(76)))));
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(45)))), ((int)(((byte)(53)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.ForeColor = System.Drawing.Color.Silver;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(0, 592);
+            this.button1.Margin = new System.Windows.Forms.Padding(3, 3, 3, 50);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(230, 80);
+            this.button1.TabIndex = 15;
+            this.button1.Text = "   Mètodo PQ";
+            this.button1.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -360,5 +384,6 @@ namespace SistemaInventario.View.Principal
         private BunifuAnimatorNS.BunifuTransition MenuEfect;
         private System.Windows.Forms.Timer tmFechaHora;
         private System.Windows.Forms.Panel PanelMenuPrincipal;
+        private System.Windows.Forms.Button button1;
     }
 }

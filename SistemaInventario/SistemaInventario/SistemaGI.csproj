@@ -52,9 +52,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controller\ConfigController\configController.cs" />
     <Compile Include="Controller\MRPController\MRPcontrol.cs" />
     <Compile Include="Controller\PQController\PQcontrol.cs" />
     <Compile Include="Model\ConeccionSQL\Coneccion.cs" />
+    <Compile Include="Model\ConfiguracionPojo\config.cs" />
     <Compile Include="Model\MRP Pojo\MRPPojo.cs" />
     <Compile Include="Model\PQ pojo\PQpojo.cs" />
     <Compile Include="Program.cs" />
@@ -64,6 +66,18 @@
     </Compile>
     <Compile Include="View\Plan Agregado\Prplan.Designer.cs">
       <DependentUpon>Prplan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Principal\Configuracines\Configuraciones.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Principal\Configuracines\Configuraciones.Designer.cs">
+      <DependentUpon>Configuraciones.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Principal\Configuracines\General.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Principal\Configuracines\General.Designer.cs">
+      <DependentUpon>General.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Principal\MenuPrincipal.cs">
       <SubType>Form</SubType>
@@ -125,6 +139,12 @@
     <EmbeddedResource Include="View\Plan Agregado\Prplan.resx">
       <DependentUpon>Prplan.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Principal\Configuracines\Configuraciones.resx">
+      <DependentUpon>Configuraciones.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Principal\Configuracines\General.resx">
+      <DependentUpon>General.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Principal\MenuPrincipal.resx">
       <DependentUpon>MenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
@@ -163,9 +183,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Controller\PlanAgregadoController\" />
     <Folder Include="img\" />
-    <Folder Include="Model\PlanAgregado Pojo\" />
   </ItemGroup>
   <ItemGroup>
     <COMReference Include="Microsoft.Office.Core">

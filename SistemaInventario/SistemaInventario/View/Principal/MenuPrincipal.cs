@@ -222,6 +222,13 @@ namespace SistemaInventario.View.Principal
             AbrirFormEnPanel(f);
         }
 
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Configuraciones f = new Configuraciones();
+            f.FormClosed += new FormClosedEventHandler(MostrarFormLogoAlCerrarForms);
+            AbrirFormEnPanel(f);
+        }
+
 
         //METODO PARA HORA Y FECHA ACTUAL ----------------------------------------------------------
         private void tmFechaHora_Tick(object sender, EventArgs e)

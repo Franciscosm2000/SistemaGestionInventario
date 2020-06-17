@@ -63,7 +63,7 @@ namespace SistemaInventario.Model.MRP_Pojo
                         switch (tipo)
                         {
                             case "LXL":
-                                proceso = "lotePorlote";
+                                proceso = "MostrarTablaCompletaLote";
                                 break;
                             case "EOQ":
                                 proceso = "MetodoPOQ";
@@ -72,13 +72,25 @@ namespace SistemaInventario.Model.MRP_Pojo
                                 proceso = "MetodoEOQ";
                                 break;
                         }
+                        if (proceso.Equals("MostrarTablaCompletaLote"))
+                        {
+                            comando.CommandText = proceso;
+                            comando.CommandType = CommandType.StoredProcedure;
+
+                            SqlDataAdapter adp = new SqlDataAdapter(comando);
+                            adp.Fill(res);
+                        }
+                        else
+                        {
                             comando.CommandText = proceso;
                             comando.CommandType = CommandType.StoredProcedure;
                             comando.Parameters.AddWithValue("@idProducto", 1);
 
                             SqlDataAdapter adp = new SqlDataAdapter(comando);
                             adp.Fill(res);
-                            comando.Parameters.Clear(); 
+                            comando.Parameters.Clear();
+                        }
+
 
                         }//fin segundo using
                     }//fin primer using

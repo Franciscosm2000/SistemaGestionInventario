@@ -90,5 +90,35 @@ namespace SistemaInventario.View.ViewPQ
             this.graficapq.SaveImage("D://Grafica_Materiales.png", ChartImageFormat.Png);
             MessageBox.Show("Imagen Guardada Correctamente");
         }
+
+        private void ModeloPQ_Resize(object sender, EventArgs e)
+        {
+            button_close.Location = new Point(this.Width - 100, 6);
+            //--------------------------------------------------------------
+
+            grupmodP.Width = (this.Width / 3) + 30;
+            tablap1.Width = grupmodP.Width - 20;
+            grupmodP.Location = new Point(10, 30);
+
+            grupmodq.Width = (this.Width / 2) + 30;
+            tablaq1.Width = grupmodq.Width - 20;
+            grupmodq.Location = new Point((grupmodP.Width + 50), 30);
+            //----------------------------------------------------------------
+
+            groupBox3.Width = grupmodP.Width;
+            groupBox3.Location = grupmodP.Location;
+            tablap2.Width = tablap1.Width;
+
+            groupBox2.Width = grupmodq.Width;
+            groupBox2.Location = grupmodq.Location;
+            tablaq2.Width = tablaq1.Width;
+
+            //----------------------------------------------------------------
+            graficapq.Width = (this.Width / 2) + 300;
+            graficapq.Location = new Point((this.Width / 4) - 150, 15);
+
+            boton_gra.Location = new Point((this.Width / 5), 430);
+            boton_guar.Location = new Point((this.Width / 5) * 3, 430);
+        }
     }
 }
