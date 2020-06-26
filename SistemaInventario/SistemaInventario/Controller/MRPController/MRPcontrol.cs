@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using System.Windows.Forms.DataVisualization.Charting;
 using SistemaInventario.Model.MRP_Pojo;
 namespace SistemaInventario.Controller.MRPController
@@ -50,6 +51,10 @@ namespace SistemaInventario.Controller.MRPController
             return m.MostrarDatoCosto();
         }
 
+        public static void ExportarExcel(DataGridView tabla)
+        {
+            MRPPojo.exportaraexcel(tabla);
+        }
 
     }
 }
