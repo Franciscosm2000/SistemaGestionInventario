@@ -56,7 +56,7 @@ namespace SistemaInventario.View.ViewPQ
 
         /*------------------------------------CODIGO DEL GRAFICO---------------------------------*/
 
-        String conexionstring = "server=LAPTOP-V5E4QOLS\\SQLEXPRESS; Database = sistemaInventario ; Integrated Security=True";
+       string conexionstring = @"server= DESKTOP-3FB1R0I\SQLEXPRESS; Database = sistemaInventario ; User Id =sa; Password = 1320022077";
         SqlDataAdapter DA;
         DataTable DT;
         DataRow DR;

@@ -13,7 +13,7 @@ namespace SistemaInventario.Plan_Agregado
 {
     public partial class Prplan : Form
     {
-        SqlConnection conec = new SqlConnection("server=LAPTOP-V5E4QOLS\\SQLEXPRESS; Database = sistemaInventario ; Integrated Security=True");
+        SqlConnection conec = new SqlConnection(@"server= DESKTOP-3FB1R0I\SQLEXPRESS; Database = sistemaInventario ; User Id =sa; Password = 1320022077");
         public Prplan()
         {
             InitializeComponent();

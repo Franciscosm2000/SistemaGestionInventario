@@ -34,10 +34,5 @@ namespace SistemaInventario.View.ViewMRP
         {
             this.exportar.ForeColor = Color.Black;
         }
-
-        private void exportar_Click(object sender, EventArgs e)
-        {
-            MRPcontrol.ExportarExcel(dgvEOQ);
-        }
     }
 }

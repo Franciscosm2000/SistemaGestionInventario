@@ -23,6 +23,12 @@ namespace SistemaInventario.Controller.ConfigController
             config m = new config();
             m.eventagregar(a);
         }
+        public static void agregar2()
+        {
+            config m = new config();
+            m.eventagregar2();
+        }
+
 
         public static  void actualizar1(TextBox a,DataGridView b)
         {
@@ -34,6 +40,12 @@ namespace SistemaInventario.Controller.ConfigController
         {
             config m = new config();
             m.actualizarAlex(a,b);
+        }
+
+        public static void actualizar3(TextBox a,TextBox b,DataGridView c)
+        {
+            config m = new config();
+            m.actualizarAJF(a, b, c);
         }
 
     }

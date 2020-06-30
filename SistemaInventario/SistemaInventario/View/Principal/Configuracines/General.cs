@@ -26,13 +26,12 @@ namespace SistemaInventario.View.Principal.Configuracines
 
         private void llamadoTabla()
         {
-            dgvListaM.DataSource = null;
             dgvProgramaM.DataSource = null;
             dgvAJFB.DataSource = null;
 
-            dgvListaM.DataSource = configController.MostrarDato("LM");
             dgvProgramaM.DataSource = configController.MostrarDato("PM");
             dgvAJFB.DataSource = Prplan.GenerateTransposedTable(configController.MostrarDato("DC"));
+            dataGridView1.DataSource = configController.MostrarDato("Ma");
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -67,16 +66,7 @@ namespace SistemaInventario.View.Principal.Configuracines
 
         private void dgvAJFB_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            try
-            {
-                textBox2.Text = dgvAJFB.CurrentRow.Cells["valores"].Value.ToString();
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show("Error de celda"); 
-            }
-           
+            textBox2.Text = dgvAJFB.CurrentRow.Cells["valores"].Value.ToString();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -97,6 +87,32 @@ namespace SistemaInventario.View.Principal.Configuracines
 
         private void textBox2_TextChanged(object sender, EventArgs e)
         {
+
+        }
+
+        private void splitContainer2_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            configController.actualizar3(textBox4,textBox5,dataGridView1);
+            dataGridView1.DataSource = configController.MostrarDato("Ma");
+
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            textBox4.Text = dataGridView1.CurrentRow.Cells["Dias"].Value.ToString();
+            textBox5.Text = dataGridView1.CurrentRow.Cells["Demand"].Value.ToString();
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            configController.agregar2();
+            dataGridView1.DataSource = configController.MostrarDato("Ma");
 
         }
     }

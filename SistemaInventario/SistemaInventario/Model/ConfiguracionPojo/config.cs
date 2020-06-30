@@ -39,6 +39,9 @@ namespace SistemaInventario.Model.ConfiguracionPojo
                             case "DC":
                                 proceso = "mostrarDatosAlexander";
                                 break;
+                            case "Ma":
+                                proceso = "mostrarAle";
+                                break;
 
                         }
 
@@ -108,6 +111,56 @@ namespace SistemaInventario.Model.ConfiguracionPojo
             };
 
             }
+
+        public void eventagregar2()
+        {
+
+            try
+            {
+                using (var coneccion = GetConnection())
+                {
+                    coneccion.Open();
+                    using (var comando = new SqlCommand())
+                    {
+                        comando.Connection = coneccion;
+                        string a = "";
+                        string e = "";
+                        long b = 0;
+                        a = Convert.ToString(Interaction.InputBox("Ingrese Demanda : "));
+                        e = Convert.ToString(Interaction.InputBox("Ingrese Dias habiles :"));
+                        bool c = long.TryParse(a, out b);
+                        bool d = long.TryParse(e, out b);
+                        if (c == true && d==true)
+                        {
+                            if(Convert.ToInt32(e) <= 30 && Convert.ToInt32(e) > 0)
+                            {
+                                string consult = "insert into AJFB values(" + Convert.ToInt32(a) + "," + Convert.ToInt32(e) + ");";
+                                SqlCommand res = new SqlCommand(consult, coneccion);
+                                res.ExecuteNonQuery();
+
+                                MessageBox.Show("Valor guardado Exitosamente");
+                            }
+                            else
+                            {
+                                MessageBox.Show("Dias Habiles no permitidos (1 - 30 ) .");
+                            }
+                            
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Valor no permitido.", "Importante!!", MessageBoxButtons.OK);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show(" Error : " + e, "Importante");
+            };
+
+        }
 
         public void actulizarplan(TextBox tex,DataGridView dbe)
         {
@@ -200,6 +253,46 @@ namespace SistemaInventario.Model.ConfiguracionPojo
             {
                 MessageBox.Show("Error : " + e, "Importante!!");
             }
+        }
+
+        public void actualizarAJF(TextBox text,TextBox text2,DataGridView dbe)
+        {
+            try
+            {
+                using (var coneccion = GetConnection())
+                {
+                    coneccion.Open();
+                    using (var comando = new SqlCommand())
+                    {
+                        string a = "";
+                        string e = "";
+                        long b = 0;
+                        a = text.Text;
+                        e = text2.Text;
+                        bool c = long.TryParse(a, out b);
+                        bool d = long.TryParse(e, out b);
+                        if (c == true && d==true)
+                        {
+                            int cp = Convert.ToInt32(dbe.CurrentRow.Cells["Mes"].Value.ToString());
+                            string consult = "update AJFB set Dias="+ Convert.ToInt32(a) +",Demand="+ Convert.ToInt32(e) +" where IdAj="+ cp +"";
+                            SqlCommand res = new SqlCommand(consult, coneccion);
+                            res.ExecuteNonQuery();
+                            MessageBox.Show("Valor actualizado Exitosamente");
+
+
+                        }
+                        else
+                        {
+                            MessageBox.Show("Valor no permitido.", "Importante!!", MessageBoxButtons.OK);
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                MessageBox.Show("Error : " + e, "Importante!!");
+            }
+
         }
 
     }
